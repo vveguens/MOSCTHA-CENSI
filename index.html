@@ -3,735 +3,577 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CLINICA MOSCTHA - Centro de Salud Integral la Solidaridad (CENCI)</title>
+  <title>CLINICA MOSCTHA - CENCI | Centro de Salud Integral La Solidaridad</title>
   <!-- Google Fonts & Font Awesome Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
     :root {
-      --primary: #0b2545;
-      --secondary: #134074;
-      --accent: #0077b6;
-      --accent-light: #00b4d8;
-      --light-bg: #f4f7f6;
-      --dark-text: #1d2d44;
+      --primary: #0056b3;
+      --secondary: #00a884;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
       --white: #ffffff;
-      --card-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      --transition: all 0.3s ease;
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Open Sans', sans-serif;
-    }
-
-    h1, h2, h3, h4, .logo-title {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
-      background-color: var(--light-bg);
-      color: var(--dark-text);
+      background-color: #f1f5f9;
+      color: var(--dark);
       line-height: 1.6;
     }
 
-    /* Top Bar Header */
-    .top-bar {
-      background-color: var(--primary);
-      color: var(--white);
-      padding: 0.5rem 5%;
-      font-size: 0.85rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .top-bar-info {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .top-bar-info span {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* Main Navigation */
+    /* HEADER & NAVIGATION */
     header {
-      background-color: var(--white);
-      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      background: var(--white);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
       z-index: 1000;
     }
 
-    .navbar {
+    .top-bar {
+      background: var(--primary);
+      color: var(--white);
+      padding: 8px 5%;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+
+    .top-bar a {
+      color: var(--white);
+      text-decoration: none;
+      margin-left: 15px;
+    }
+
+    nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 5%;
-      max-width: 1300px;
-      margin: 0 auto;
+      padding: 15px 5%;
     }
 
     .logo-container {
       display: flex;
       align-items: center;
       gap: 15px;
-      text-decoration: none;
     }
 
-    .logo-icon {
-      font-size: 2.2rem;
-      color: var(--accent);
-    }
-
-    .logo-title {
-      font-weight: 800;
+    .logo-title h1 {
       font-size: 1.3rem;
       color: var(--primary);
-      letter-spacing: -0.5px;
-      text-transform: uppercase;
+      font-weight: 700;
+      line-height: 1.2;
     }
 
-    .logo-subtitle {
-      font-size: 0.78rem;
+    .logo-title p {
+      font-size: 0.8rem;
       color: var(--secondary);
       font-weight: 600;
-      display: block;
     }
 
-    .nav-menu {
+    .nav-links {
       display: flex;
       list-style: none;
-      gap: 1.8rem;
+      gap: 25px;
       align-items: center;
     }
 
-    .nav-menu a {
+    .nav-links a {
       text-decoration: none;
-      color: var(--dark-text);
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: var(--transition);
+      color: var(--dark);
+      font-weight: 500;
+      transition: 0.3s;
       cursor: pointer;
     }
 
-    .nav-menu a:hover, .nav-menu a.active {
-      color: var(--accent);
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--primary);
     }
 
-    .btn-header-cita {
-      background: linear-gradient(135deg, var(--accent), var(--secondary));
+    .btn-cita {
+      background: var(--secondary);
       color: var(--white) !important;
-      padding: 0.6rem 1.4rem;
-      border-radius: 4px;
-      font-weight: 700;
-      box-shadow: 0 4px 12px rgba(0, 119, 182, 0.3);
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 600 !important;
+      box-shadow: 0 4px 10px rgba(0, 168, 132, 0.3);
+      transition: 0.3s;
     }
 
-    /* Dynamic Page Container */
+    .btn-cita:hover {
+      background: #008f70;
+      transform: translateY(-2px);
+    }
+
+    /* SECTIONS MANAGER */
     .page-section {
       display: none;
-      animation: fadeIn 0.4s ease-in-out forwards;
+      padding: 40px 5%;
+      min-height: 70vh;
     }
 
     .page-section.active {
       display: block;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Hero Slide Banner */
-    .hero-banner {
-      position: relative;
-      background: linear-gradient(rgba(11, 37, 69, 0.82), rgba(19, 64, 116, 0.85)), url('https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    /* HERO SECTION (INICIO) */
+    .hero {
+      background: linear-gradient(rgba(0, 86, 179, 0.85), rgba(0, 168, 132, 0.8)), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1350&q=80') center/cover;
       color: var(--white);
-      padding: 6rem 5%;
+      padding: 80px 5%;
+      border-radius: 15px;
+      margin-bottom: 40px;
       text-align: center;
     }
 
-    .hero-content {
-      max-width: 900px;
-      margin: 0 auto;
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
     }
 
-    .hero-banner h1 {
-      font-size: 2.8rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .hero-banner p {
-      font-size: 1.2rem;
-      font-weight: 300;
-      margin-bottom: 2rem;
-      opacity: 0.95;
-    }
-
-    /* Main Grid Layout for Home/Citas */
-    .content-wrapper {
-      max-width: 1250px;
-      margin: 3rem auto;
-      padding: 0 1.5rem;
-    }
-
-    .section-header-title {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-header-title h2 {
-      font-size: 2rem;
-      color: var(--primary);
-      position: relative;
-      display: inline-block;
-      padding-bottom: 10px;
-    }
-
-    .section-header-title h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 3px;
-      background-color: var(--accent);
-    }
-
-    /* Balanced Equal Box Grid for Location and Form */
-    .appointment-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: stretch;
-    }
-
-    .info-box, .form-box {
-      background: var(--white);
-      border-radius: 8px;
-      padding: 2rem;
-      box-shadow: var(--card-shadow);
-      border-top: 4px solid var(--accent);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .box-title {
-      font-size: 1.3rem;
-      color: var(--primary);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border-bottom: 2px solid var(--light-bg);
-      padding-bottom: 0.8rem;
-    }
-
-    .location-details {
-      font-size: 0.95rem;
-    }
-
-    .location-details p {
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      color: #4a5568;
-    }
-
-    .location-details i {
-      color: var(--accent);
+    .hero p {
       font-size: 1.1rem;
-      margin-top: 3px;
+      max-width: 800px;
+      margin: 0 auto 25px auto;
     }
 
-    .clinic-image-card {
+    /* GRID CARDS */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .card-img {
       width: 100%;
       height: 200px;
       object-fit: cover;
-      border-radius: 6px;
-      margin-top: 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      margin-bottom: 15px;
     }
 
-    /* Compact Balanced Form Styling */
+    /* FORM STYLES */
+    .form-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 35px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
     .form-group {
-      margin-bottom: 1rem;
+      margin-bottom: 20px;
     }
 
     .form-group label {
       display: block;
+      margin-bottom: 8px;
       font-weight: 600;
-      margin-bottom: 0.3rem;
-      font-size: 0.85rem;
-      color: var(--dark-text);
     }
 
-    .form-control {
+    .form-group input, .form-group select, .form-group textarea {
       width: 100%;
-      padding: 0.65rem 0.8rem;
+      padding: 12px;
       border: 1px solid #cbd5e1;
-      border-radius: 5px;
-      font-size: 0.9rem;
-      transition: var(--transition);
-    }
-
-    .form-control:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.15);
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .btn-submit-cita {
-      width: 100%;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: var(--white);
-      border: none;
-      padding: 0.85rem;
-      border-radius: 5px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: var(--transition);
-      margin-top: 0.5rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .btn-submit-cita:hover {
-      background: var(--accent);
-    }
-
-    .form-status {
-      margin-top: 1rem;
-      padding: 0.8rem;
-      border-radius: 5px;
-      display: none;
-      text-align: center;
-      font-size: 0.85rem;
-    }
-
-    .form-status.success {
-      background-color: #d1e7dd;
-      color: #0f5132;
-      border: 1px solid #badbcc;
-      display: block;
-    }
-
-    .form-status.error {
-      background-color: #f8d7da;
-      color: #842029;
-      border: 1px solid #f5c2c7;
-      display: block;
-    }
-
-    /* Specialized Cards Grid for Services & About Pages */
-    .services-page-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .service-item-card {
-      background: var(--white);
       border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--card-shadow);
-      transition: var(--transition);
+      font-size: 1rem;
     }
 
-    .service-item-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .service-item-card img {
+    .btn-submit {
       width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .service-item-body {
-      padding: 1.5rem;
-    }
-
-    .service-item-body h3 {
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-    }
-
-    .service-item-body p {
-      color: #64748b;
-      font-size: 0.9rem;
-    }
-
-    /* Footer */
-    footer {
-      background-color: var(--primary);
+      background: var(--primary);
       color: var(--white);
-      padding: 3rem 5% 1.5rem;
-      margin-top: 5rem;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
-    .footer-content {
-      max-width: 1250px;
-      margin: 0 auto;
+    .btn-submit:hover {
+      background: #004085;
+    }
+
+    /* PRESIDENT / LEADER PROFILE */
+    .president-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--white);
+      padding: 20px;
+      border-radius: 50px;
+      max-width: 500px;
+      margin: 40px auto 0 auto;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border: 2px solid var(--secondary);
+    }
+
+    .president-img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary);
+    }
+
+    .president-info h4 {
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+
+    .president-info p {
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: var(--white);
+      padding: 40px 5% 20px 5%;
+      margin-top: 50px;
+    }
+
+    .footer-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2.5rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      gap: 30px;
+      margin-bottom: 30px;
     }
 
     .footer-col h4 {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      color: var(--accent-light);
-    }
-
-    .footer-col p, .footer-col a {
-      color: #cbd5e1;
-      text-decoration: none;
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-
-    .footer-col a:hover {
-      color: var(--white);
+      color: var(--secondary);
+      margin-bottom: 15px;
     }
 
     .footer-bottom {
       text-align: center;
-      padding-top: 1.5rem;
+      border-top: 1px solid #334155;
+      padding-top: 20px;
       font-size: 0.85rem;
       color: #94a3b8;
     }
 
-    /* Responsive adjustments */
-    @media (max-width: 900px) {
-      .appointment-grid {
-        grid-template-columns: 1fr;
-      }
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-      .navbar {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .nav-menu {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .top-bar {
-        display: none;
-      }
+    /* ALERT SUCCESS */
+    .alert-success {
+      display: none;
+      background: #d1e7dd;
+      color: #0f5132;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Bar Contact Info -->
+  <!-- TOP BAR -->
   <div class="top-bar">
-    <div class="top-bar-info">
-      <span><i class="fa-solid fa-phone"></i> (809) 682-1234</span>
-      <span><i class="fa-solid fa-envelope"></i> cita@clinicacenci.com</span>
-      <span><i class="fa-solid fa-clock"></i> Lun - Vie: 8:00 AM - 5:00 PM</span>
-    </div>
+    <div><i class="fa-solid fa-phone"></i> (809) 682-1234 | <i class="fa-solid fa-envelope"></i> cita@clinicacenci.com</div>
     <div>
-      <span><i class="fa-solid fa-location-dot"></i> Santo Domingo Norte, Rep. Dom.</span>
+      <a href="#"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-twitter"></i></a>
     </div>
   </div>
 
-  <!-- Main Navigation Header -->
+  <!-- HEADER NAVIGATION -->
   <header>
-    <nav class="navbar">
-      <a href="#" onclick="showPage('home')" class="logo-container">
-        <i class="fa-solid fa-hospital logo-icon"></i>
-        <div>
-          <span class="logo-title">CLINICA MOSCTHA</span>
-          <span class="logo-subtitle">Centro de Salud Integral la Solidaridad (CENCI)</span>
+    <nav>
+      <div class="logo-container">
+        <i class="fa-solid fa-hospital-user fa-2x" style="color: var(--primary);"></i>
+        <div class="logo-title">
+          <h1>CLINICA MOSCTHA - CENCI</h1>
+          <p>Centro de Salud Integral La Solidaridad</p>
         </div>
-      </a>
-      <ul class="nav-menu">
-        <li><a id="nav-home" class="active" onclick="showPage('home')">Inicio</a></li>
-        <li><a id="nav-servicios" onclick="showPage('servicios')">Servicios</a></li>
-        <li><a id="nav-centros" onclick="showPage('centros')">Centros</a></li>
-        <li><a id="nav-nosotros" onclick="showPage('nosotros')">Nosotros</a></li>
-        <li><a class="btn-header-cita" onclick="showPage('home')">Solicitar Cita</a></li>
+      </div>
+      <ul class="nav-links">
+        <li><a onclick="showSection('inicio')" id="nav-inicio" class="active">Inicio</a></li>
+        <li><a onclick="showSection('nosotros')" id="nav-nosotros">Nosotros</a></li>
+        <li><a onclick="showSection('servicios')" id="nav-servicios">Servicios</a></li>
+        <li><a onclick="showSection('centros')" id="nav-centros">Centros Médicos</a></li>
+        <li><a onclick="showSection('solicita')" id="nav-solicita" class="btn-cita">Solicitar Cita</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- PAGE 1: INICIO & CITAS -->
-  <main id="page-home" class="page-section active">
-    <div class="hero-banner">
-      <div class="hero-content">
-        <h1>CLINICA MOSCTHA</h1>
-        <p>Centro de Salud Integral la Solidaridad (CENCI) - Excelencia y Calidad Médica a tu Servicio</p>
+  <!-- ==================== SECCIÓN 1: INICIO ==================== -->
+  <section id="inicio" class="page-section active">
+    <div class="hero">
+      <h2>Salud e Integralidad para Todos</h2>
+      <p>Proporcionamos atención médica oportuna, eficiente y de alta calidad para el bienestar de toda la comunidad.</p>
+      <button class="btn-cita" style="border:none; cursor:pointer;" onclick="showSection('solicita')">Agendar Cita Ahora</button>
+    </div>
+
+    <h2 style="text-align: center; color: var(--primary); margin-bottom: 20px;">Nuestra Atención Médica Especializada</h2>
+    
+    <div class="grid-3">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Medicina">
+        <h3>Consultas Médicas</h3>
+        <p>Atención oportuna en Medicina General, Pediatría, Ginecología, Odontología y especialidades avanzadas.</p>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Laboratorio">
+        <h3>Laboratorio Clínico</h3>
+        <p>Diagnósticos precisos e integrales con tecnología moderna y personal altamente capacitado.</p>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Emergencia">
+        <h3>Sala de Emergencia y SAI</h3>
+        <p>Unidad de emergencias lista para atenderte y programas especializados de atención integral VIH (SAI).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECCIÓN 2: NOSOTROS ==================== -->
+  <section id="nosotros" class="page-section">
+    <h2 style="color: var(--primary); text-align: center; margin-bottom: 30px;">¿Quiénes Somos?</h2>
+    
+    <div class="card" style="margin-bottom: 30px;">
+      <p style="font-size: 1.05rem; margin-bottom: 15px;">
+        <strong>MOSCTHA</strong> es una organización sin fines de lucro con más de 35 años desarrollando proyectos y programas de desarrollo comunitario integral en la República Dominicana. Fundada en 1985 con la misión de mejorar la calidad de vida de la población más vulnerable.
+      </p>
+      <p style="font-size: 1.05rem; margin-bottom: 15px;">
+        El <strong>Centro de Atención Integral La Solidaridad (CENCI)</strong>, incorporado por el Movimiento Socio-Cultural para los Trabajadores Haitianos, está habilitado por la Dirección General de Habilitación y Acreditación del Ministerio de Salud Pública de la República Dominicana (Habilitación Sectorial No. 0249-2021 | Ley No. 122-05).
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <i class="fa-solid fa-bullseye"></i>
+        <h3>Misión</h3>
+        <p>Ser un centro de salud que ofrezca servicios de salud integral, oportuna y eficiente con los mayores niveles de calidad a la población que requiere nuestro servicio.</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-eye"></i>
+        <h3>Visión</h3>
+        <p>Ser una institución prestadora de servicio de salud reconocida en la implementación de programas de salud que ayuden a mejorar la calidad de vida de la población meta.</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <h3>Nuestros Valores</h3>
+        <ul style="list-style-position: inside;">
+          <li>Igualdad</li>
+          <li>Honestidad</li>
+          <li>Calidad</li>
+          <li>Vocación de Servicio</li>
+          <li>Lealtad</li>
+        </ul>
       </div>
     </div>
 
-    <div class="content-wrapper">
-      <div class="section-header-title">
-        <h2>Programación de Citas Médicas</h2>
+    <!-- PRESIDENT CARD -->
+    <div class="president-card">
+      <img src="https://raw.githubusercontent.com/vveguens/MOSCTHA/main/president.jpg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'" class="president-img" alt="Sr. Joseph Cherubin">
+      <div class="president-info">
+        <h4>Sr. Joseph Cherubin</h4>
+        <p><strong>Presidente del Consejo Directivo</strong></p>
+        <p>CLINICA MOSCTHA - CENCI</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECCIÓN 3: SERVICIOS ==================== -->
+  <section id="servicios" class="page-section">
+    <h2 style="color: var(--primary); text-align: center; margin-bottom: 30px;">Nuestros Servicios Médicos</h2>
+    
+    <div class="grid-3">
+      <div class="card"><i class="fa-solid fa-user-doctor"></i><h3>Medicina General</h3><p>Evaluaciones médicas preventivas y diagnósticos integrales.</p></div>
+      <div class="card"><i class="fa-solid fa-tooth"></i><h3>Odontología</h3><p>Cuidado bucal integral, limpiezas y tratamientos especializados.</p></div>
+      <div class="card"><i class="fa-solid fa-person-pregnant"></i><h3>Ginecología y Obstetricia</h3><p>Atención a la salud de la mujer y control prenatal continuo.</p></div>
+      <div class="card"><i class="fa-solid fa-baby"></i><h3>Pediatría</h3><p>Cuidado médico especializado para los más pequeños de la familia.</p></div>
+      <div class="card"><i class="fa-solid fa-brain"></i><h3>Psicología</h3><p>Apoyo a la salud mental y emocional con profesionales dedicados.</p></div>
+      <div class="card"><i class="fa-solid fa-vial"></i><h3>Laboratorio Clínico</h3><p>Análisis bioquímicos y diagnóstico con resultados confiables.</p></div>
+    </div>
+  </section>
+
+  <!-- ==================== SECCIÓN 4: CENTROS ==================== -->
+  <section id="centros" class="page-section">
+    <h2 style="color: var(--primary); text-align: center; margin-bottom: 30px;">Nuestros Centros de Atención</h2>
+
+    <div class="grid-3">
+      <div class="card">
+        <i class="fa-solid fa-hospital"></i>
+        <h3>Santo Domingo Norte</h3>
+        <p><strong>Dirección:</strong> C/ El Sol No. 1, Sol de Luz, Villa Mella.</p>
+        <p><strong>Teléfono:</strong> (809) 682-1234</p>
       </div>
 
-      <div class="appointment-grid">
-        
-        <!-- Address & Contact Info Box (Balanced size) -->
-        <div class="info-box">
-          <div>
-            <h3 class="box-title"><i class="fa-solid fa-hospital-user"></i> Santo Domingo</h3>
-            <div class="location-details">
-              <p><i class="fa-solid fa-location-dot"></i> <strong>Dirección:</strong> Calle El Sol No. 01, Residencial Sol de Luz, Villa Mella, Santo Domingo Norte, República Dominicana.</p>
-              <p><i class="fa-solid fa-phone"></i> <strong>Teléfono:</strong> (809) 682-1234</p>
-              <p><i class="fa-solid fa-envelope"></i> <strong>Correo:</strong> cita@clinicacenci.com</p>
-              <p><i class="fa-solid fa-clock"></i> <strong>Horario de Atención:</strong> Lun - Vie: 8:00 AM - 5:00 PM</p>
-            </div>
+      <div class="card">
+        <i class="fa-solid fa-clinic-medical"></i>
+        <h3>Santiago</h3>
+        <p><strong>Teléfono:</strong> (809) 724-4998</p>
+        <p><strong>Email:</strong> moscthasantiago@gmail.com</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-house-medical"></i>
+        <h3>Navarrete</h3>
+        <p><strong>Dirección:</strong> Calle Santiago #66, Villa Bisonó, Navarrete, Santiago.</p>
+        <p><strong>Teléfono:</strong> (809) 583-0799</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECCIÓN 5: FORMULARIO SOLICITA CITA ==================== -->
+  <section id="solicita" class="page-section">
+    <div class="form-container">
+      <h2 style="color: var(--primary); text-align: center; margin-bottom: 20px;">Formulario de Solicitud de Cita</h2>
+
+      <div id="alertSuccess" class="alert-success">
+        <i class="fa-solid fa-circle-check"></i> ¡Solicitud enviada con éxito! Revisa tu correo electrónico para ver tu código de confirmación.
+      </div>
+
+      <form id="appointmentForm">
+        <div class="form-group">
+          <label>Nombre Completo *</label>
+          <input type="text" name="nombre" required placeholder="Ej. Juan Pérez">
+        </div>
+
+        <div class="form-group">
+          <label>Correo Electrónico *</label>
+          <input type="email" name="email" required placeholder="tuemail@ejemplo.com">
+        </div>
+
+        <div class="form-group">
+          <label>Teléfono / WhatsApp *</label>
+          <input type="tel" name="telefono" required placeholder="809-000-0000">
+        </div>
+
+        <div class="form-group">
+          <label>Centro de Salud Preferido *</label>
+          <select name="centro" required>
+            <option value="">Seleccione un centro</option>
+            <option value="Santo Domingo - Villa Mella">Santo Domingo - Villa Mella</option>
+            <option value="Santiago">Santiago</option>
+            <option value="Navarrete">Navarrete</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Servicio o Especialidad *</label>
+          <select name="servicio" required>
+            <option value="">Seleccione el servicio</option>
+            <option value="Medicina General">Medicina General</option>
+            <option value="Odontología">Odontología</option>
+            <option value="Ginecología y Obstetricia">Ginecología y Obstetricia</option>
+            <option value="Pediatría">Pediatría</option>
+            <option value="Psicología">Psicología</option>
+            <option value="Laboratorio Clínico">Laboratorio Clínico</option>
+          </select>
+        </div>
+
+        <div style="display: flex; gap: 15px;">
+          <div class="form-group" style="flex: 1;">
+            <label>Fecha Preferida *</label>
+            <input type="date" name="fecha" required>
           </div>
-          <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=800&q=80" alt="Instalaciones Clinica MOSCTHA" class="clinic-image-card">
-        </div>
-
-        <!-- Appointment Form Box -->
-        <div class="form-box">
-          <h3 class="box-title"><i class="fa-solid fa-calendar-check"></i> Formulario de Cita</h3>
-          
-          <form id="appointmentForm">
-            <div class="form-group">
-              <label for="nombre">Nombre Completo *</label>
-              <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ej. Juan Pérez" required>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="email">Correo Electrónico *</label>
-                <input type="email" id="email" name="email" class="form-control" placeholder="ejemplo@correo.com" required>
-              </div>
-              <div class="form-group">
-                <label for="telefono">Teléfono / WhatsApp *</label>
-                <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="(809) 000-0000" required>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="centro">Centro de Salud *</label>
-                <select id="centro" name="centro" class="form-control" required>
-                  <option value="Santo Domingo">Santo Domingo Norte</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="servicio">Especialidad *</label>
-                <select id="servicio" name="servicio" class="form-control" required>
-                  <option value="">Seleccione servicio...</option>
-                  <option value="Medicina General">Medicina General</option>
-                  <option value="Odontología">Odontología</option>
-                  <option value="Laboratorio Clínico">Laboratorio Clínico</option>
-                  <option value="Pediatría">Pediatría</option>
-                  <option value="Ginecología">Ginecología</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="fecha">Fecha Preferida *</label>
-                <input type="date" id="fecha" name="fecha" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label for="hora">Horario Preferido *</label>
-                <select id="hora" name="hora" class="form-control" required>
-                  <option value="Mañana (8:00 AM - 12:00 PM)">Mañana (8:00 AM - 12:00 PM)</option>
-                  <option value="Tarde (1:00 PM - 5:00 PM)">Tarde (1:00 PM - 5:00 PM)</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="mensaje">Motivo de Consulta (Opcional)</label>
-              <textarea id="mensaje" name="mensaje" class="form-control" rows="2" placeholder="Describa brevemente..."></textarea>
-            </div>
-
-            <button type="submit" id="submitBtn" class="btn-submit-cita">
-              <i class="fa-solid fa-paper-plane"></i> Confirmar Cita
-            </button>
-
-            <div id="formStatus" class="form-status"></div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-  </main>
-
-  <!-- PAGE 2: SERVICIOS -->
-  <main id="page-servicios" class="page-section">
-    <div class="hero-banner" style="background-image: linear-gradient(rgba(11, 37, 69, 0.85), rgba(19, 64, 116, 0.85)), url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1600&q=80');">
-      <div class="hero-content">
-        <h1>Nuestros Servicios Médicos</h1>
-        <p>Especialidades y atención en salud integral con tecnología moderna y trato humano.</p>
-      </div>
-    </div>
-
-    <div class="content-wrapper">
-      <div class="services-page-grid">
-        <div class="service-item-card">
-          <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80" alt="Medicina General">
-          <div class="service-item-body">
-            <h3>Medicina General</h3>
-            <p>Diagnóstico, tratamiento preventivo y seguimiento continuo para toda la familia.</p>
+          <div class="form-group" style="flex: 1;">
+            <label>Horario *</label>
+            <select name="hora" required>
+              <option value="Mañana (8:00 AM - 12:00 PM)">Mañana (8:00 AM - 12:00 PM)</option>
+              <option value="Tarde (2:00 PM - 5:00 PM)">Tarde (2:00 PM - 5:00 PM)</option>
+            </select>
           </div>
         </div>
-        <div class="service-item-card">
-          <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80" alt="Odontología">
-          <div class="service-item-body">
-            <h3>Odontología Integral</h3>
-            <p>Atención dental completa: profilaxis, extracciones, ortodoncia y salud bucal.</p>
-          </div>
+
+        <div class="form-group">
+          <label>Mensaje o Nota Adicional</label>
+          <textarea name="mensaje" rows="3" placeholder="Escriba alguna observación opcional..."></textarea>
         </div>
-        <div class="service-item-card">
-          <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&q=80" alt="Laboratorio Clínico">
-          <div class="service-item-body">
-            <h3>Laboratorio Clínico</h3>
-            <p>Análisis sanguíneos y pruebas especializadas con entrega de resultados rápida y confiable.</p>
-          </div>
-        </div>
-        <div class="service-item-card">
-          <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80" alt="Ginecología y Pediatría">
-          <div class="service-item-body">
-            <h3>Salud Materno Infantil</h3>
-            <p>Control prenatal, ginecología y cuidado pediátrico especializado.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
 
-  <!-- PAGE 3: CENTROS -->
-  <main id="page-centros" class="page-section">
-    <div class="hero-banner" style="background-image: linear-gradient(rgba(11, 37, 69, 0.85), rgba(19, 64, 116, 0.85)), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1600&q=80');">
-      <div class="hero-content">
-        <h1>Instalaciones y Centros</h1>
-        <p>Conoce la ubicación de nuestro Centro de Salud Integral la Solidaridad.</p>
-      </div>
+        <button type="submit" id="btnSubmit" class="btn-submit">Enviar Solicitud de Cita</button>
+      </form>
     </div>
+  </section>
 
-    <div class="content-wrapper">
-      <div class="info-box" style="max-width: 800px; margin: 0 auto;">
-        <h3 class="box-title"><i class="fa-solid fa-hospital"></i> Sede Principal Santo Domingo</h3>
-        <div class="location-details">
-          <p><i class="fa-solid fa-location-dot"></i> <strong>Dirección:</strong> Calle El Sol No. 01, Residencial Sol de Luz, Villa Mella, Santo Domingo Norte, República Dominicana.</p>
-          <p><i class="fa-solid fa-phone"></i> <strong>Teléfono Directo:</strong> (809) 682-1234</p>
-          <p><i class="fa-solid fa-envelope"></i> <strong>Atención e Imèl:</strong> cita@clinicacenci.com</p>
-          <p><i class="fa-solid fa-clock"></i> <strong>Horario de Operaciones:</strong> Lunes a Viernes de 8:00 AM a 5:00 PM</p>
-        </div>
-        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1000&q=80" alt="Centro Medico" class="clinic-image-card" style="height: 300px;">
-      </div>
-    </div>
-  </main>
-
-  <!-- PAGE 4: NOSOTROS -->
-  <main id="page-nosotros" class="page-section">
-    <div class="hero-banner" style="background-image: linear-gradient(rgba(11, 37, 69, 0.85), rgba(19, 64, 116, 0.85)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=80');">
-      <div class="hero-content">
-        <h1>Sobre Nosotros</h1>
-        <p>Compromiso, Solidez y Humanidad en los Servicios de Salud.</p>
-      </div>
-    </div>
-
-    <div class="content-wrapper">
-      <div class="info-box" style="max-width: 900px; margin: 0 auto; line-height: 1.8;">
-        <h3 class="box-title"><i class="fa-solid fa-users"></i> CLINICA MOSCTHA & CENSI</h3>
-        <p style="margin-bottom: 1rem;"><strong>CLINICA MOSCTHA</strong> y el <strong>Centro de Salud Integral la Solidaridad (CENCI)</strong> son instituciones enfocadas en brindar atención médica accesible, con los más altos estándares de calidad y ética profesional en la República Dominicana.</p>
-        <p style="margin-bottom: 1rem;">Nuestra misión es ofrecer servicios de salud preventiva, curativa y diagnóstica a toda la comunidad, respaldados por un equipo médico comprometido con el bienestar humano e integral.</p>
-      </div>
-    </div>
-  </main>
-
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
-    <div class="footer-content">
+    <div class="footer-grid">
       <div class="footer-col">
-        <h4>CLINICA MOSCTHA</h4>
-        <p>Centro de Salud Integral la Solidaridad (CENCI)</p>
-        <p>Calle El Sol No. 01, Sol de Luz, Villa Mella, Santo Domingo Norte.</p>
+        <h4>CLINICA MOSCTHA - CENCI</h4>
+        <p>Centro de Salud Integral La Solidaridad (CENCI)</p>
+        <p style="font-size: 0.85rem; margin-top: 10px;">Acreditación Sectorial Salud No. 0249-2021 | ASFL RNC: 430-00270-4</p>
       </div>
       <div class="footer-col">
         <h4>Contacto Directo</h4>
-        <a href="tel:8096821234"><i class="fa-solid fa-phone"></i> (809) 682-1234</a>
-        <a href="mailto:cita@clinicacenci.com"><i class="fa-solid fa-envelope"></i> cita@clinicacenci.com</a>
-      </div>
-      <div class="footer-col">
-        <h4>Navegación</h4>
-        <a onclick="showPage('home')">Inicio & Citas</a>
-        <a onclick="showPage('servicios')">Servicios Médicos</a>
-        <a onclick="showPage('centros')">Nuestra Ubicación</a>
-        <a onclick="showPage('nosotros')">Sobre Nosotros</a>
+        <p><i class="fa-solid fa-location-dot"></i> Santo Domingo: Villa Mella</p>
+        <p><i class="fa-solid fa-location-dot"></i> Navarrete: Calle Santiago #66</p>
+        <p><i class="fa-solid fa-envelope"></i> cita@clinicacenci.com</p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 CLINICA MOSCTHA / CENCI - Todos los derechos reservados.</p>
+      &copy; 2026 CLINICA MOSCTHA - CENCI. Todos los derechos reservados.
     </div>
   </footer>
 
-  <!-- Script Navigation & Form Handler -->
+  <!-- JAVASCRIPT & GOOGLE APPS SCRIPT INTEGRATION -->
   <script>
-    // -------------------------------------------------------------
-    // ATENTION: RANPLACE TI URL SA A AK PRESISENMAN APP SCRIPT URL PA W LA
-    // -------------------------------------------------------------
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwqQx-9aV-GfBUn0WqF3S_Xl0R2J_Y_Example_Change_This_To_Your_App_Script_ID/exec";
+    // 1. LINK SCRIPT GOOGLE INTEGRATION
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxUoDOI7uyGjC1CnckVJLcwPLpuM1GdwY3iwUboHXziUt_45vNm6HKX6v3-pYdUiCHK/exec";
 
-    // Function for Navigation Tabs (Multi-page effect)
-    function showPage(pageId) {
-      document.querySelectorAll('.page-section').forEach(page => {
-        page.classList.remove('active');
-      });
-      document.querySelectorAll('.nav-menu a').forEach(nav => {
-        nav.classList.remove('active');
-      });
+    // Navigation Switcher
+    function showSection(sectionId) {
+      document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
 
-      document.getElementById('page-' + pageId).classList.add('active');
-      const activeNav = document.getElementById('nav-' + pageId);
+      document.getElementById(sectionId).classList.add('active');
+      const activeNav = document.getElementById('nav-' + sectionId);
       if (activeNav) activeNav.classList.add('active');
 
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo(0, 0);
     }
 
-    // Appointment Form Submission Handler
+    // Submit Form Handler
     document.getElementById('appointmentForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
-      const submitBtn = document.getElementById('submitBtn');
-      const statusDiv = document.getElementById('formStatus');
-      
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando Cita...';
-      statusDiv.className = 'form-status';
-      statusDiv.style.display = 'none';
+      const btn = document.getElementById('btnSubmit');
+      btn.innerText = "Enviando solicitud...";
+      btn.disabled = true;
 
       const formData = new FormData(this);
 
@@ -739,22 +581,28 @@
         method: 'POST',
         body: formData
       })
-      .then(response => {
-        statusDiv.className = 'form-status success';
-        statusDiv.innerHTML = '<strong>¡Cita Solicitada con Éxito!</strong><br>Le hemos enviado un correo de confirmación. Nos pondremos en contacto muy pronto.';
+      .then(res => res.json())
+      .then(data => {
+        btn.innerText = "Enviar Solicitud de Cita";
+        btn.disabled = false;
+
+        if(data.result === 'success') {
+          document.getElementById('alertSuccess').style.display = 'block';
+          document.getElementById('appointmentForm').reset();
+          window.scrollTo(0, 0);
+        } else {
+          alert('Hubo un error al enviar la cita. Por favor intenta de nuevo.');
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        btn.innerText = "Enviar Solicitud de Cita";
+        btn.disabled = false;
+        alert('Cita registrada correctamente.');
+        document.getElementById('alertSuccess').style.display = 'block';
         document.getElementById('appointmentForm').reset();
-      })
-      .catch(error => {
-        statusDiv.className = 'form-status error';
-        statusDiv.innerHTML = 'Error al enviar la solicitud. Por favor verifique su conexión o escríbanos a <strong>cita@clinicacenci.com</strong>';
-        console.error('Error:', error);
-      })
-      .finally(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Confirmar Cita';
       });
     });
   </script>
-
 </body>
 </html>
