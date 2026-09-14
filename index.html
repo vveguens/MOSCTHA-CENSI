@@ -1,1 +1,634 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOSCTHA & CENSI - Red de Salud y Atención Médica</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary-color: #0077b6;
+      --secondary-color: #00b4d8;
+      --accent-color: #2a9d8f;
+      --dark-color: #1d3557;
+      --light-color: #f8f9fa;
+      --white: #ffffff;
+      --gray: #6c757d;
+      --light-gray: #e9ecef;
+      --shadow: 0 4px 15px rgba(0,0,0,0.08);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      color: #333;
+      background-color: #fafafa;
+      line-height: 1.6;
+    }
+
+    /* Header & Navigation */
+    header {
+      background-color: var(--white);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      font-size: 2rem;
+      color: var(--primary-color);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--dark-color);
+      line-height: 1.1;
+    }
+
+    .logo-subtitle {
+      font-size: 0.75rem;
+      color: var(--gray);
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark-color);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-color);
+    }
+
+    .btn-cita {
+      background-color: var(--primary-color);
+      color: var(--white);
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 4px 10px rgba(0, 119, 182, 0.25);
+    }
+
+    .btn-cita:hover {
+      background-color: var(--dark-color);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, rgba(0,119,182,0.9), rgba(42,157,143,0.85)), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80') center/cover no-repeat;
+      color: var(--white);
+      padding: 5rem 5% 6rem;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      margin: -3rem auto 4rem;
+      padding: 0 1.5rem;
+    }
+
+    /* Services Section */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      color: var(--dark-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    /* Locations & Form Grid */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    /* Locations Card */
+    .locations-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      color: var(--dark-color);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title i {
+      color: var(--primary-color);
+    }
+
+    .location-item {
+      padding-bottom: 1.2rem;
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .location-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .location-item h4 {
+      color: var(--primary-color);
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .location-item p {
+      color: var(--gray);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 0.2rem;
+    }
+
+    /* Appointment Form Card */
+    .appointment-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+      border-top: 5px solid var(--primary-color);
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+      color: var(--dark-color);
+      font-size: 0.9rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid #ced4da;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.15);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background-color: var(--primary-color);
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .submit-btn:hover {
+      background-color: var(--dark-color);
+    }
+
+    .form-status {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      display: none;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .form-status.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      display: block;
+    }
+
+    .form-status.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark-color);
+      color: var(--white);
+      padding: 3rem 5% 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-col h4 {
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-col h4::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--secondary-color);
+    }
+
+    .footer-col p, .footer-col a {
+      color: #adb5bd;
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .footer-col a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.85rem;
+      color: #adb5bd;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .nav-links {
+        gap: 1rem;
+      }
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <a href="#" class="logo-container">
+        <i class="fa-solid fa-user-doctor logo-icon"></i>
+        <div class="logo-text">
+          <span class="logo-title">MOSCTHA & CENSI</span>
+          <span class="logo-subtitle">Red de Salud Comunitaria</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#centros">Centros</a></li>
+        <li><a href="#cita" class="btn-cita">Solicitar Cita</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Atención Médica Integral y Humana</h1>
+      <p>Comprometidos con la salud y bienestar de nuestras comunidades en Santo Domingo, Santiago y Navarrete.</p>
+    </div>
+  </section>
+
+  <!-- Main Content Container -->
+  <div class="container">
+
+    <!-- Services Grid -->
+    <section id="servicios" class="services-grid">
+      <div class="service-card">
+        <i class="fa-solid fa-stethoscope service-icon"></i>
+        <h3>Consulta General</h3>
+        <p>Evaluación médica primaria continua y prevención de enfermedades.</p>
+      </div>
+      <div class="service-card">
+        <i class="fa-solid fa-tooth service-icon"></i>
+        <h3>Odontología</h3>
+        <p>Atención dental integral para niños y adultos con tecnología moderna.</p>
+      </div>
+      <div class="service-card">
+        <i class="fa-solid fa-vial service-icon"></i>
+        <h3>Laboratorio Clínico</h3>
+        <p>Análisis y pruebas diagnósticas confiables y rápidas.</p>
+      </div>
+      <div class="service-card">
+        <i class="fa-solid fa-heart-pulse service-icon"></i>
+        <h3>Programas Preventivos</h3>
+        <p>Seguimiento comunitario y salud pública especializada.</p>
+      </div>
+    </section>
+
+    <!-- Main Grid: Locations & Form -->
+    <div class="main-grid">
+
+      <!-- Locations Sidebar -->
+      <section id="centros" class="locations-card">
+        <h2 class="section-title"><i class="fa-solid fa-location-dot"></i> Nuestros Centros</h2>
+
+        <div class="location-item">
+          <h4>Sede Santo Domingo</h4>
+          <p><i class="fa-solid fa-map-pin"></i> Calle Barney N. Morgan #252, Ens. Luperón</p>
+          <p><i class="fa-solid fa-phone"></i> (809) 682-1234</p>
+          <p><i class="fa-solid fa-clock"></i> Lun - Vie: 8:00 AM - 5:00 PM</p>
+        </div>
+
+        <div class="location-item">
+          <h4>Sede Santiago</h4>
+          <p><i class="fa-solid fa-map-pin"></i> Av. Imbert #84, Gurabito, Santiago</p>
+          <p><i class="fa-solid fa-phone"></i> (809) 583-5678</p>
+          <p><i class="fa-solid fa-clock"></i> Lun - Vie: 8:00 AM - 5:00 PM</p>
+        </div>
+
+        <div class="location-item">
+          <h4>Sede Navarrete</h4>
+          <p><i class="fa-solid fa-map-pin"></i> Calle Mella #12, Navarrete</p>
+          <p><i class="fa-solid fa-phone"></i> (809) 586-9012</p>
+          <p><i class="fa-solid fa-clock"></i> Lun - Vie: 8:00 AM - 4:00 PM</p>
+        </div>
+      </section>
+
+      <!-- Appointment Form -->
+      <section id="cita" class="appointment-card">
+        <h2 class="section-title"><i class="fa-solid fa-calendar-check"></i> Programar Cita Médica</h2>
+        
+        <form id="appointmentForm">
+          <div class="form-group">
+            <label for="nombre">Nombre Completo *</label>
+            <input type="text" id="nombre" name="nombre" class="form-control" required placeholder="Ej. Juan Pérez">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Correo Electrónico *</label>
+              <input type="email" id="email" name="email" class="form-control" required placeholder="ejemplo@correo.com">
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono / WhatsApp *</label>
+              <input type="tel" id="telefono" name="telefono" class="form-control" required placeholder="(809) 000-0000">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="centro">Centro de Salud *</label>
+              <select id="centro" name="centro" class="form-control" required>
+                <option value="">Seleccione un centro...</option>
+                <option value="Santo Domingo">Santo Domingo</option>
+                <option value="Santiago">Santiago</option>
+                <option value="Navarrete">Navarrete</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="servicio">Especialidad / Servicio *</label>
+              <select id="servicio" name="servicio" class="form-control" required>
+                <option value="">Seleccione servicio...</option>
+                <option value="Medicina General">Medicina General</option>
+                <option value="Odontología">Odontología</option>
+                <option value="Laboratorio">Laboratorio Clínico</option>
+                <option value="Consulta Especializada">Consulta Especializada</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fecha">Fecha Preferida *</label>
+              <input type="date" id="fecha" name="fecha" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="hora">Horario Preferido *</label>
+              <select id="hora" name="hora" class="form-control" required>
+                <option value="Mañana (8:00 AM - 12:00 PM)">Mañana (8:00 AM - 12:00 PM)</option>
+                <option value="Tarde (1:00 PM - 4:00 PM)">Tarde (1:00 PM - 4:00 PM)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="mensaje">Notas Adicionales (Opcional)</label>
+            <textarea id="mensaje" name="mensaje" class="form-control" rows="3" placeholder="Indique brevemente el motivo de su visita o requerimiento especial..."></textarea>
+          </div>
+
+          <button type="submit" id="submitBtn" class="submit-btn">
+            <i class="fa-solid fa-paper-plane"></i> Confirmar Cita
+          </button>
+
+          <div id="formStatus" class="form-status"></div>
+        </form>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>MOSCTHA & CENSI</h4>
+        <p>Movimiento Socio-Cultural para Trabajadores Haitianos & Centro de Salud y Promoción Social.</p>
+        <p>Brindando servicios médicos accesibles y de calidad.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto Directo</h4>
+        <a href="mailto:cita@clinicacenci.com"><i class="fa-solid fa-envelope"></i> cita@clinicacenci.com</a>
+        <p><i class="fa-solid fa-globe"></i> clinicacenci.com</p>
+      </div>
+      <div class="footer-col">
+        <h4>Enlaces Rápidos</h4>
+        <a href="#servicios">Servicios Médicos</a>
+        <a href="#centros">Nuestras Clínicas</a>
+        <a href="#cita">Solicitud de Cita</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 MOSCTHA & CENSI - Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Google Apps Script Handler JS -->
+  <script>
+    // URL Deployment de tu Google Apps Script
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwqQx-9aV-GfBUn0WqF3S_Xl0R2J_Y_Example_Change_This_To_Your_App_Script_ID/exec";
+
+    document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const statusDiv = document.getElementById('formStatus');
+      
+      // Cambiar estado del botón
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
+      statusDiv.className = 'form-status';
+      statusDiv.style.display = 'none';
+
+      const formData = new FormData(this);
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        statusDiv.className = 'form-status success';
+        statusDiv.innerHTML = '<strong>¡Cita solicitada con éxito!</strong><br>Hemos enviado un correo de confirmación a tu e-mail. Nos pondremos en contacto contigo a la brevedad.';
+        document.getElementById('appointmentForm').reset();
+      })
+      .catch(error => {
+        statusDiv.className = 'form-status error';
+        statusDiv.innerHTML = 'Ocurrió un error al procesar su solicitud. Por favor intente nuevamente o escríbanos a <strong>cita@clinicacenci.com</strong>';
+        console.error('Error:', error);
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Confirmar Cita';
+      });
+    });
+  </script>
+
+</body>
+</html>
 
