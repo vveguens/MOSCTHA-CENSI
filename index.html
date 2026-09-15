@@ -4,19 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CLINICA MOSCTHA - CENCI | Centro de Salud Integral La Solidaridad</title>
+  
   <!-- Google Fonts & Font Awesome Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
     :root {
-      --primary: #1a365d;   /* Ble marin pwofon */
-      --secondary: #0284c7; /* Ble klere pwofesyonèl */
-      --accent: #0d9488;
+      --primary: #1a365d;   
+      --secondary: #0284c7; 
+      --accent: #16a34a;    
       --dark: #0f172a;
       --light: #f8fafc;
       --gray: #64748b;
       --white: #ffffff;
+      --border: #e2e8f0;
     }
 
     * {
@@ -27,14 +29,13 @@
     }
 
     body {
-      background-color: #f1f5f9;
+      background-color: #f8fafc;
       color: var(--dark);
       line-height: 1.6;
       width: 100%;
       overflow-x: hidden;
     }
 
-    /* CONTAINER FULL WIDTH */
     .wrapper {
       width: 100%;
       min-height: 100vh;
@@ -46,29 +47,11 @@
     /* HEADER & NAVIGATION */
     header {
       background: var(--white);
-      border-bottom: 2px solid #e2e8f0;
+      border-bottom: 2px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 1000;
       width: 100%;
-    }
-
-    .top-bar {
-      background: var(--primary);
-      color: var(--white);
-      padding: 8px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.88rem;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .top-bar a {
-      color: var(--white);
-      text-decoration: none;
-      margin-left: 15px;
     }
 
     nav {
@@ -76,41 +59,50 @@
       justify-content: space-between;
       align-items: center;
       padding: 15px 5%;
-      flex-wrap: wrap;
-      gap: 15px;
+      position: relative;
     }
 
     .logo-container {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
     }
 
     .logo-title h1 {
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       color: var(--primary);
       font-weight: 700;
       line-height: 1.2;
     }
 
     .logo-title p {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       color: var(--secondary);
       font-weight: 600;
+    }
+
+    /* HAMBURGER MENU BUTTON */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: var(--primary);
+      cursor: pointer;
     }
 
     .nav-links {
       display: flex;
       list-style: none;
-      gap: 20px;
+      gap: 22px;
       align-items: center;
-      flex-wrap: wrap;
     }
 
     .nav-links a {
       text-decoration: none;
       color: var(--dark);
       font-weight: 500;
+      font-size: 0.95rem;
       transition: 0.3s;
       cursor: pointer;
     }
@@ -122,7 +114,7 @@
     .btn-cita {
       background: var(--primary);
       color: var(--white) !important;
-      padding: 10px 22px;
+      padding: 8px 18px;
       border-radius: 6px;
       font-weight: 600 !important;
       transition: 0.3s;
@@ -136,7 +128,7 @@
     /* SECTIONS MANAGER */
     .page-section {
       display: none;
-      padding: 50px 5%;
+      padding: 40px 5%;
       width: 100%;
       flex: 1;
     }
@@ -145,75 +137,85 @@
       display: block;
     }
 
+    .section-title {
+      text-align: center;
+      color: var(--primary);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+
     /* HERO SECTION (INICIO) */
     .hero {
       background: linear-gradient(rgba(26, 54, 93, 0.85), rgba(2, 132, 199, 0.75)), 
                   url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
       color: var(--white);
-      padding: 100px 5%;
+      padding: 70px 5%;
       border-radius: 12px;
-      margin-bottom: 40px;
+      margin-bottom: 35px;
       text-align: center;
     }
 
     .hero h2 {
-      font-size: 2.8rem;
-      margin-bottom: 15px;
+      font-size: 2.2rem;
+      margin-bottom: 12px;
       font-weight: 700;
     }
 
     .hero p {
-      font-size: 1.25rem;
-      max-width: 900px;
-      margin: 0 auto 30px auto;
+      font-size: 1.05rem;
+      max-width: 800px;
+      margin: 0 auto 20px auto;
     }
 
-    /* GRID CARDS FULL WIDTH */
+    /* GRID CARDS WITH IMAGES */
     .grid-3 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      margin-top: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
       width: 100%;
     }
 
     .card {
       background: var(--white);
-      padding: 30px;
+      padding: 22px;
       border-radius: 12px;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
       transition: 0.3s;
       cursor: pointer;
       display: flex;
       flex-direction: column;
+      text-align: center;
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     }
 
-    .card i {
-      font-size: 2.5rem;
+    .card i.card-icon {
+      font-size: 2.2rem;
       color: var(--secondary);
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 
     .card h3 {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       color: var(--primary);
-      font-size: 1.25rem;
+      font-size: 1.15rem;
     }
 
     .card p {
       color: var(--gray);
+      font-size: 0.9rem;
       flex: 1;
     }
 
     .card-img {
       width: 100%;
-      height: 220px;
+      height: 180px;
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 15px;
@@ -223,74 +225,86 @@
       margin-top: 15px;
       color: var(--secondary);
       font-weight: 600;
+      font-size: 0.88rem;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
     }
 
-    /* FORM STYLES */
+    /* FORM STYLES (KONPAK & SANTRÈ) */
+    .form-section-container {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 2px dashed var(--border);
+    }
+
     .form-container {
-      max-width: 850px;
+      max-width: 680px;
       margin: 0 auto;
       background: var(--white);
-      padding: 40px;
+      padding: 25px 30px;
       border-radius: 12px;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     }
 
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
+      text-align: left;
     }
 
     .form-group label {
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
       font-weight: 600;
+      font-size: 0.88rem;
       color: var(--primary);
     }
 
     .form-group input, .form-group select, .form-group textarea {
       width: 100%;
-      padding: 12px;
+      padding: 10px;
       border: 1px solid #cbd5e1;
       border-radius: 6px;
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
 
     .btn-submit {
       width: 100%;
-      background: var(--primary);
+      background: var(--accent);
       color: var(--white);
-      padding: 15px;
+      padding: 12px;
       border: none;
       border-radius: 6px;
-      font-size: 1.1rem;
+      font-size: 0.98rem;
       font-weight: 600;
       cursor: pointer;
       transition: 0.3s;
     }
 
     .btn-submit:hover {
-      background: var(--secondary);
+      background: #15803d;
     }
 
-    /* PRESIDENT / LEADER PROFILE */
+    /* PRESIDENT PROFILE */
     .president-card {
       display: flex;
       align-items: center;
-      gap: 25px;
+      justify-content: center;
+      gap: 20px;
       background: #f8fafc;
-      padding: 25px 35px;
-      border-radius: 60px;
-      max-width: 650px;
-      margin: 40px auto 0 auto;
+      padding: 20px 30px;
+      border-radius: 50px;
+      max-width: 580px;
+      margin: 35px auto 0 auto;
       border: 2px solid var(--secondary);
+      text-align: left;
     }
 
     .president-img {
-      width: 100px;
-      height: 100px;
+      width: 85px;
+      height: 85px;
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid var(--primary);
@@ -298,22 +312,20 @@
 
     .president-info h4 {
       color: var(--primary);
-      font-size: 1.25rem;
+      font-size: 1.1rem;
     }
 
     .president-info p {
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       color: var(--gray);
     }
 
-    /* MODAL POPUP POU DETAY SÈVIS YO */
+    /* MODAL POPUP */
     .modal {
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: rgba(15, 23, 42, 0.7);
       z-index: 2000;
       justify-content: center;
@@ -323,62 +335,62 @@
 
     .modal-content {
       background: var(--white);
-      padding: 35px;
+      padding: 28px;
       border-radius: 12px;
-      max-width: 600px;
+      max-width: 500px;
       width: 100%;
       position: relative;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      text-align: center;
     }
 
     .close-modal {
       position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 1.8rem;
+      top: 10px; right: 16px;
+      font-size: 1.6rem;
       cursor: pointer;
       color: var(--gray);
     }
 
     .modal-title {
       color: var(--primary);
-      margin-bottom: 15px;
-      font-size: 1.5rem;
+      margin-bottom: 12px;
+      font-size: 1.25rem;
     }
 
     .modal-body {
       color: var(--dark);
-      font-size: 1rem;
-      line-height: 1.7;
+      font-size: 0.92rem;
+      line-height: 1.6;
     }
 
-    /* FOOTER */
+    /* FOOTER ACCOLADES STYLE */
     footer {
       background: var(--primary);
       color: var(--white);
-      padding: 50px 5% 20px 5%;
+      padding: 35px 5% 18px 5%;
       margin-top: auto;
       width: 100%;
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 35px;
-      margin-bottom: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-bottom: 20px;
+      text-align: center;
     }
 
     .footer-col h4 {
       color: #38bdf8;
-      margin-bottom: 15px;
-      font-size: 1.1rem;
+      margin-bottom: 10px;
+      font-size: 1rem;
     }
 
     .footer-bottom {
       text-align: center;
       border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 20px;
-      font-size: 0.9rem;
+      padding-top: 15px;
+      font-size: 0.82rem;
       color: #94a3b8;
     }
 
@@ -386,33 +398,43 @@
       display: none;
       background: #d1e7dd;
       color: #0f5132;
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 20px;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 15px;
       text-align: center;
       font-weight: 600;
+      font-size: 0.88rem;
     }
 
-    /* RESPONSIVE DESIGN FOR MOBILE */
+    /* RESPONSIVE MOBIL */
     @media (max-width: 768px) {
-      .top-bar {
-        justify-content: center;
-        text-align: center;
+      .menu-toggle {
+        display: block;
       }
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+
       .nav-links {
-        width: 100%;
+        display: none;
         flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: var(--white);
+        border-bottom: 2px solid var(--border);
+        padding: 15px 20px;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
         align-items: flex-start;
         gap: 12px;
-        margin-top: 10px;
       }
+
+      .nav-links.show {
+        display: flex;
+      }
+
       .hero h2 {
-        font-size: 2rem;
+        font-size: 1.6rem;
       }
+
       .president-card {
         flex-direction: column;
         text-align: center;
@@ -425,15 +447,6 @@
 
   <div class="wrapper">
 
-    <!-- TOP BAR -->
-    <div class="top-bar">
-      <div><i class="fa-solid fa-phone"></i> (809) 682-1234 | <i class="fa-solid fa-envelope"></i> cita@clinicacenci.com</div>
-      <div>
-        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-      </div>
-    </div>
-
     <!-- HEADER NAVIGATION -->
     <header>
       <nav>
@@ -444,12 +457,17 @@
             <p>Centro de Salud Integral La Solidaridad</p>
           </div>
         </div>
-        <ul class="nav-links">
+
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir Menú">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
           <li><a onclick="showSection('inicio')" id="nav-inicio" class="active">Inicio</a></li>
           <li><a onclick="showSection('nosotros')" id="nav-nosotros">Nosotros</a></li>
           <li><a onclick="showSection('servicios')" id="nav-servicios">Servicios</a></li>
           <li><a onclick="showSection('centros')" id="nav-centros">Centros Médicos</a></li>
-          <li><a onclick="showSection('solicita')" id="nav-solicita" class="btn-cita">Solicitar Cita</a></li>
+          <li><a onclick="scrollToForm()" class="btn-cita">Solicitar Cita</a></li>
         </ul>
       </nav>
     </header>
@@ -459,10 +477,10 @@
       <div class="hero">
         <h2>Salud e Integralidad para Todos</h2>
         <p>Proporcionamos atención médica oportuna, eficiente y de alta calidad para el bienestar de toda la comunidad.</p>
-        <button class="btn-cita" style="border:none; cursor:pointer;" onclick="showSection('solicita')">Agendar Cita Ahora</button>
+        <button class="btn-cita" style="border:none; cursor:pointer;" onclick="scrollToForm()">Agendar Cita Ahora</button>
       </div>
 
-      <h2 style="text-align: center; color: var(--primary); margin-bottom: 25px;">Nuestra Atención Médica Especializada</h2>
+      <h2 class="section-title">Nuestra Atención Médica Especializada</h2>
       
       <div class="grid-3">
         <div class="card" onclick="openModal('Consulta General y Especializada', 'Ofrecemos evaluaciones diagnósticas oportunas, tratamiento integral y seguimiento personalizado para pacientes de todas las edades en Medicina General, Pediatría, Ginecología y más.')">
@@ -480,7 +498,7 @@
         </div>
 
         <div class="card" onclick="openModal('Servicio de Atención Integral (SAI) y Seguimiento-ARV', 'Contamos con una unidad médica especializada en programas de salud comunitaria, atención médica integral para VIH/SIDA (SAI) y seguimiento riguroso de tratamiento Antirretroviral (Seguimiento-ARV) con absoluta confidencialidad y trato humano.')">
-          <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Emergencia">
+          <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Atención Integral">
           <h3>Sala de Atención Integral (SAI)</h3>
           <p>Unidad especializada en atención integral VIH (SAI), consejería comunitaria y seguimiento de tratamiento ARV.</p>
           <div class="btn-more">Ver detalles <i class="fa-solid fa-arrow-right"></i></div>
@@ -490,34 +508,34 @@
 
     <!-- ==================== SECCIÓN 2: NOSOTROS ==================== -->
     <section id="nosotros" class="page-section">
-      <h2 style="color: var(--primary); text-align: center; margin-bottom: 30px;">¿Quiénes Somos?</h2>
+      <h2 class="section-title">¿Quiénes Somos?</h2>
       
-      <div class="card" style="margin-bottom: 30px; cursor: default;">
-        <p style="font-size: 1.1rem; margin-bottom: 15px; color: var(--dark);">
+      <div class="card" style="margin-bottom: 25px; cursor: default; text-align: left;">
+        <p style="font-size: 0.95rem; margin-bottom: 12px; color: var(--dark);">
           <strong>MOSCTHA</strong> es una organización sin fines de lucro con más de 35 años desarrollando proyectos y programas de desarrollo comunitario integral en la República Dominicana. Fundada en 1985 con la misión de mejorar la calidad de vida de la población más vulnerable.
         </p>
-        <p style="font-size: 1.1rem; color: var(--dark);">
+        <p style="font-size: 0.95rem; color: var(--dark);">
           El <strong>Centro de Atención Integral La Solidaridad (CENCI)</strong>, incorporado por el Movimiento Socio-Cultural para los Trabajadores Haitianos, está habilitado por la Dirección General de Habilitación y Acreditación del Ministerio de Salud Pública de la República Dominicana (Habilitación Sectorial No. 0249-2021 | Ley No. 122-05).
         </p>
       </div>
 
       <div class="grid-3">
         <div class="card" style="cursor: default;">
-          <i class="fa-solid fa-bullseye"></i>
+          <i class="fa-solid fa-bullseye card-icon"></i>
           <h3>Misión</h3>
           <p>Ser un centro de salud que ofrezca servicios de salud integral, oportuna y eficiente con los mayores niveles de calidad a la población que requiere nuestro servicio.</p>
         </div>
 
         <div class="card" style="cursor: default;">
-          <i class="fa-solid fa-eye"></i>
+          <i class="fa-solid fa-eye card-icon"></i>
           <h3>Visión</h3>
           <p>Ser una institución prestadora de servicio de salud reconocida en la implementación de programas de salud que ayuden a mejorar la calidad de vida de la población meta.</p>
         </div>
 
         <div class="card" style="cursor: default;">
-          <i class="fa-solid fa-heart-pulse"></i>
+          <i class="fa-solid fa-heart-pulse card-icon"></i>
           <h3>Nuestros Valores</h3>
-          <ul style="list-style-position: inside; color: var(--gray);">
+          <ul style="list-style-position: inside; color: var(--gray); font-size: 0.88rem; text-align: left; display: inline-block;">
             <li>Igualdad y Respeto Humanitario</li>
             <li>Honestidad y Transparencia</li>
             <li>Calidad Médica Certificada</li>
@@ -540,46 +558,46 @@
 
     <!-- ==================== SECCIÓN 3: SERVICIOS ==================== -->
     <section id="servicios" class="page-section">
-      <h2 style="color: var(--primary); text-align: center; margin-bottom: 30px;">Nuestros Servicios Médicos Especializados</h2>
+      <h2 class="section-title">Nuestros Servicios Médicos Especializados</h2>
       
       <div class="grid-3">
         <div class="card" onclick="openModal('Medicina General', 'Atención médica primaria para adultos y niños, prevención de enfermedades, diagnósticos clínicos y referencias especializadas.')">
-          <i class="fa-solid fa-user-doctor"></i>
+          <i class="fa-solid fa-user-doctor card-icon"></i>
           <h3>Medicina General</h3>
           <p>Evaluaciones médicas preventivas y diagnósticos integrales.</p>
           <div class="btn-more">Más información <i class="fa-solid fa-circle-info"></i></div>
         </div>
 
         <div class="card" onclick="openModal('Odontología Integral', 'Cuidado bucal completo: profilaxis, extracciones, profilaxis infantil, restauraciones y tratamiento de enfermedades dentales.')">
-          <i class="fa-solid fa-tooth"></i>
+          <i class="fa-solid fa-tooth card-icon"></i>
           <h3>Odontología</h3>
           <p>Cuidado bucal integral, limpiezas y tratamientos especializados.</p>
           <div class="btn-more">Más información <i class="fa-solid fa-circle-info"></i></div>
         </div>
 
         <div class="card" onclick="openModal('Ginecología y Obstetricia', 'Atención integral en la salud reproductiva de la mujer, exámenes de papanicolaou, monitoreo prenatal y seguimiento del embarazo.')">
-          <i class="fa-solid fa-person-pregnant"></i>
+          <i class="fa-solid fa-person-pregnant card-icon"></i>
           <h3>Ginecología y Obstetricia</h3>
           <p>Atención a la salud de la mujer y control prenatal continuo.</p>
           <div class="btn-more">Más información <i class="fa-solid fa-circle-info"></i></div>
         </div>
 
         <div class="card" onclick="openModal('Pediatría', 'Atención médica especializada desde recién nacidos hasta la adolescencia, control de crecimiento, desarrollo y vacunación.')">
-          <i class="fa-solid fa-baby"></i>
+          <i class="fa-solid fa-baby card-icon"></i>
           <h3>Pediatría</h3>
           <p>Cuidado médico especializado para los más pequeños de la familia.</p>
           <div class="btn-more">Más información <i class="fa-solid fa-circle-info"></i></div>
         </div>
 
         <div class="card" onclick="openModal('Seguimiento-ARV y Programa SAI', 'Atención personalizada para el inicio, continuidad y seguimiento del tratamiento antirretroviral (Seguimiento-ARV), acompañamiento psicológico y social con total privacidad.')">
-          <i class="fa-solid fa-ribbon"></i>
+          <i class="fa-solid fa-ribbon card-icon"></i>
           <h3>Seguimiento-ARV (SAI)</h3>
           <p>Atención integral, consejería y monitoreo del tratamiento Antirretroviral.</p>
           <div class="btn-more">Más información <i class="fa-solid fa-circle-info"></i></div>
         </div>
 
         <div class="card" onclick="openModal('Laboratorio Clínico', 'Pruebas clínicas con los estándares más estrictos de bioseguridad: hemogramas, glucosa, perfil lipídico, pruebas virales y hormonales.')">
-          <i class="fa-solid fa-vial"></i>
+          <i class="fa-solid fa-vial card-icon"></i>
           <h3>Laboratorio Clínico</h3>
           <p>Análisis bioquímicos y diagnóstico con resultados confiables.</p>
           <div class="btn-more">Más información <i class="fa-solid fa-circle-info"></i></div>
@@ -589,25 +607,25 @@
 
     <!-- ==================== SECCIÓN 4: CENTROS ==================== -->
     <section id="centros" class="page-section">
-      <h2 style="color: var(--primary); text-align: center; margin-bottom: 30px;">Nuestros Centros de Atención Médica</h2>
+      <h2 class="section-title">Nuestros Centros de Atención Médica</h2>
 
       <div class="grid-3">
         <div class="card" style="cursor: default;">
-          <i class="fa-solid fa-hospital"></i>
+          <i class="fa-solid fa-hospital card-icon"></i>
           <h3>Santo Domingo Norte</h3>
           <p><strong>Dirección:</strong> C/ El Sol No. 1, Sol de Luz, Villa Mella.</p>
           <p><strong>Teléfono:</strong> (809) 682-1234</p>
         </div>
 
         <div class="card" style="cursor: default;">
-          <i class="fa-solid fa-clinic-medical"></i>
+          <i class="fa-solid fa-clinic-medical card-icon"></i>
           <h3>Santiago</h3>
           <p><strong>Teléfono:</strong> (809) 724-4998</p>
           <p><strong>Email:</strong> moscthasantiago@gmail.com</p>
         </div>
 
         <div class="card" style="cursor: default;">
-          <i class="fa-solid fa-house-medical"></i>
+          <i class="fa-solid fa-house-medical card-icon"></i>
           <h3>Navarrete</h3>
           <p><strong>Dirección:</strong> Calle Santiago #66, Villa Bisonó, Navarrete, Santiago.</p>
           <p><strong>Teléfono:</strong> (809) 583-0799</p>
@@ -615,13 +633,13 @@
       </div>
     </section>
 
-    <!-- ==================== SECCIÓN 5: FORMULARIO SOLICITA CITA ==================== -->
-    <section id="solicita" class="page-section">
+    <!-- ==================== FORMULARIO SOLICITA CITA (ANBA NAN PAJ LA) ==================== -->
+    <div class="form-section-container" id="seccion-formulario">
       <div class="form-container">
-        <h2 style="color: var(--primary); text-align: center; margin-bottom: 20px;">Formulario de Solicitud de Cita</h2>
+        <h2 style="color: var(--primary); text-align: center; margin-bottom: 18px; font-weight: 700; font-size: 1.4rem;">Solicitar Cita Médica</h2>
 
         <div id="alertSuccess" class="alert-success">
-          <i class="fa-solid fa-circle-check"></i> ¡Solicitud enviada con éxito! Revisa tu correo electrónico para ver tu código de confirmación.
+          <i class="fa-solid fa-circle-check"></i> ¡Solicitud enviada con éxito! Revisa tu correo electrónico para ver tu confirmación.
         </div>
 
         <form id="appointmentForm">
@@ -630,38 +648,39 @@
             <input type="text" name="nombre" required placeholder="Ej. Juan Pérez">
           </div>
 
-          <div class="form-group">
-            <label>Correo Electrónico *</label>
-            <input type="email" name="email" required placeholder="tuemail@ejemplo.com">
+          <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+            <div class="form-group" style="flex: 1; min-width: 200px;">
+              <label>Correo Electrónico *</label>
+              <input type="email" name="email" required placeholder="tuemail@ejemplo.com">
+            </div>
+            <div class="form-group" style="flex: 1; min-width: 200px;">
+              <label>Teléfono / WhatsApp *</label>
+              <input type="tel" name="telefono" required placeholder="809-000-0000">
+            </div>
           </div>
 
-          <div class="form-group">
-            <label>Teléfono / WhatsApp *</label>
-            <input type="tel" name="telefono" required placeholder="809-000-0000">
-          </div>
-
-          <div class="form-group">
-            <label>Centro de Salud Preferido *</label>
-            <select name="centro" required>
-              <option value="">Seleccione un centro</option>
-              <option value="Santo Domingo - Villa Mella">Santo Domingo - Villa Mella</option>
-              <option value="Santiago">Santiago</option>
-              <option value="Navarrete">Navarrete</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Servicio o Especialidad *</label>
-            <select name="servicio" required>
-              <option value="">Seleccione el servicio</option>
-              <option value="Medicina General">Medicina General</option>
-              <option value="Odontología">Odontología</option>
-              <option value="Ginecología y Obstetricia">Ginecología y Obstetricia</option>
-              <option value="Pediatría">Pediatría</option>
-              <option value="Seguimiento-ARV">Seguimiento-ARV</option>
-              <option value="Psicología">Psicología</option>
-              <option value="Laboratorio Clínico">Laboratorio Clínico</option>
-            </select>
+          <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+            <div class="form-group" style="flex: 1; min-width: 200px;">
+              <label>Centro de Salud *</label>
+              <select name="centro" required>
+                <option value="">Seleccione centro</option>
+                <option value="Santo Domingo - Villa Mella">Santo Domingo - Villa Mella</option>
+                <option value="Santiago">Santiago</option>
+                <option value="Navarrete">Navarrete</option>
+              </select>
+            </div>
+            <div class="form-group" style="flex: 1; min-width: 200px;">
+              <label>Servicio o Especialidad *</label>
+              <select name="servicio" required>
+                <option value="">Seleccione servicio</option>
+                <option value="Medicina General">Medicina General</option>
+                <option value="Odontología">Odontología</option>
+                <option value="Ginecología y Obstetricia">Ginecología y Obstetricia</option>
+                <option value="Pediatría">Pediatría</option>
+                <option value="Seguimiento-ARV">Seguimiento-ARV</option>
+                <option value="Laboratorio Clínico">Laboratorio Clínico</option>
+              </select>
+            </div>
           </div>
 
           <div style="display: flex; gap: 15px; flex-wrap: wrap;">
@@ -679,14 +698,14 @@
           </div>
 
           <div class="form-group">
-            <label>Mensaje o Nota Adicional</label>
-            <textarea name="mensaje" rows="3" placeholder="Escriba alguna observación opcional..."></textarea>
+            <label>Mensaje o Observación</label>
+            <textarea name="mensaje" rows="2" placeholder="Escriba alguna observación opcional..."></textarea>
           </div>
 
           <button type="submit" id="btnSubmit" class="btn-submit">Enviar Solicitud de Cita</button>
         </form>
       </div>
-    </section>
+    </div>
 
     <!-- FOOTER -->
     <footer>
@@ -694,13 +713,13 @@
         <div class="footer-col">
           <h4>CLINICA MOSCTHA - CENCI</h4>
           <p>Centro de Salud Integral La Solidaridad (CENCI)</p>
-          <p style="font-size: 0.85rem; margin-top: 10px;">Acreditación Sectorial Salud No. 0249-2021 | ASFL RNC: 430-00270-4</p>
+          <p style="font-size: 0.8rem; margin-top: 6px; opacity: 0.85;">Acreditación Sectorial Salud No. 0249-2021 | ASFL RNC: 430-00270-4</p>
         </div>
         <div class="footer-col">
           <h4>Contacto Directo</h4>
-          <p><i class="fa-solid fa-location-dot"></i> Santo Domingo: Villa Mella</p>
-          <p><i class="fa-solid fa-location-dot"></i> Navarrete: Calle Santiago #66</p>
+          <p><i class="fa-solid fa-phone"></i> (809) 682-1234</p>
           <p><i class="fa-solid fa-envelope"></i> cita@clinicacenci.com</p>
+          <p><i class="fa-solid fa-location-dot"></i> Villa Mella | Navarrete | Santiago</p>
         </div>
       </div>
       <div class="footer-bottom">
@@ -716,13 +735,18 @@
       <span class="close-modal" onclick="closeModal()">&times;</span>
       <h3 id="modalTitle" class="modal-title">Título del Servicio</h3>
       <p id="modalBody" class="modal-body">Descripción del servicio...</p>
-      <button class="btn-cita" style="margin-top: 20px; border:none; cursor:pointer;" onclick="closeModal(); showSection('solicita');">Solicitar cita para este servicio</button>
+      <button class="btn-cita" style="margin-top: 18px; border:none; cursor:pointer;" onclick="closeModal(); scrollToForm();">Solicitar cita para este servicio</button>
     </div>
   </div>
 
   <!-- JAVASCRIPT INTEGRATION -->
   <script>
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxUoDOI7uyGjC1CnckVJLcwPLpuM1GdwY3iwUboHXziUt_45vNm6HKX6v3-pYdUiCHK/exec";
+
+    function toggleMenu() {
+      const menu = document.getElementById('navLinks');
+      menu.classList.toggle('show');
+    }
 
     function showSection(sectionId) {
       document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
@@ -732,7 +756,13 @@
       const activeNav = document.getElementById('nav-' + sectionId);
       if (activeNav) activeNav.classList.add('active');
 
+      document.getElementById('navLinks').classList.remove('show');
       window.scrollTo(0, 0);
+    }
+
+    function scrollToForm() {
+      document.getElementById('seccion-formulario').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('navLinks').classList.remove('show');
     }
 
     function openModal(title, text) {
@@ -745,7 +775,6 @@
       document.getElementById('serviceModal').style.display = 'none';
     }
 
-    // Fermer modal si ou klike deyò
     window.onclick = function(event) {
       const modal = document.getElementById('serviceModal');
       if (event.target == modal) {
@@ -772,16 +801,13 @@
         btn.disabled = false;
         document.getElementById('alertSuccess').style.display = 'block';
         document.getElementById('appointmentForm').reset();
-        window.scrollTo(0, 0);
       })
       .catch(err => {
         console.error(err);
-        // Menm si gen yon ti fwon ne kote CORS, nou konfime bay itilizatè a
         btn.innerText = "Enviar Solicitud de Cita";
         btn.disabled = false;
         document.getElementById('alertSuccess').style.display = 'block';
         document.getElementById('appointmentForm').reset();
-        window.scrollTo(0, 0);
       });
     });
   </script>
