@@ -254,6 +254,26 @@
       color: var(--white);
       font-weight: 600;
       font-size: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-arrow {
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.2);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+    }
+
+    .card-item:hover .card-arrow {
+      background: var(--primary);
+      transform: translateX(4px);
     }
 
     /* NOSOTROS SECTION STYLES */
@@ -425,12 +445,12 @@
       font-size: 1rem;
     }
 
-    /* MODAL */
+    /* MODAL POPUP */
     .modal {
       display: none;
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.65);
       z-index: 2000;
       justify-content: center;
       align-items: center;
@@ -440,10 +460,11 @@
     .modal-content {
       background: var(--white);
       padding: 30px;
-      border-radius: 16px;
-      max-width: 500px;
+      border-radius: 18px;
+      max-width: 580px;
       width: 100%;
       position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
 
     .close-btn {
@@ -451,6 +472,18 @@
       top: 15px; right: 20px;
       font-size: 1.8rem;
       cursor: pointer;
+      color: var(--gray);
+    }
+
+    .modal-body-list {
+      margin: 15px 0 20px 0;
+      padding-left: 20px;
+      color: var(--dark);
+    }
+
+    .modal-body-list li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
     }
 
     /* DESKTOP RESPONSIVE ADJUSTMENTS */
@@ -465,7 +498,7 @@
         gap: 25px;
       }
       .menu-toggle { display: none; }
-      .bottom-bar { display: none; } /* Kache floating bar nan sou laptop */
+      .bottom-bar { display: none; }
       body { padding-bottom: 0; }
     }
   </style>
@@ -510,45 +543,63 @@
       <h3 class="section-title">Nuestras Áreas de Atención</h3>
 
       <div class="grid-cards">
-        <div class="card-item" onclick="openModal('Consulta Médica', 'Atención integral en medicina general, pediatría y ginecología.')">
+        <div class="card-item" onclick="openModal('Consulta Ambulatoria', 'Ofrecemos atención médica primaria integral y oportuna para evaluar, diagnosticar y dar seguimiento a su salud sin necesidad de hospitalización.', ['Evaluación clínica preventiva integral', 'Diagnóstico y tratamiento de enfermedades comunes', 'Seguimiento continuo de la salud familiar', 'Referencia oportuna a especialidades'])">
           <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" alt="Consulta">
-            <div class="card-overlay">Consulta Ambulatoria</div>
+            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" alt="Consulta Ambulatoria">
+            <div class="card-overlay">
+              <span>Consulta Ambulatoria</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
           </div>
         </div>
 
-        <div class="card-item" onclick="openModal('Laboratorio Clínico', 'Análisis bioquímicos y diagnósticos con alta precisión.')">
+        <div class="card-item" onclick="openModal('Laboratorio Clínico', 'Contamos con equipos modernos para realizar análisis y pruebas diagnósticas con total precisión, confidencialidad y rapidez.', ['Análisis de sangre y bioquímica completa', 'Pruebas infecciosas y de seguimiento', 'Exámenes hematológicos y de orina', 'Entrega rápida y confiable de resultados'])">
           <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Laboratorio">
-            <div class="card-overlay">Laboratorio Clínico</div>
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Laboratorio Clínico">
+            <div class="card-overlay">
+              <span>Laboratorio Clínico</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
           </div>
         </div>
 
-        <div class="card-item" onclick="openModal('Atención Integral SAI', 'Programa de seguimiento especializado y confidencial.')">
+        <div class="card-item" onclick="openModal('Atención Integral (SAI)', 'Un programa especializado y humanizado enfocado en brindar soporte médico, confidencialidad y seguimiento a pacientes con condiciones de salud continuas.', ['Atención confidencial y personalizada', 'Seguimiento y control de tratamiento ARV', 'Acompañamiento médico e integral continuo', 'Soporte humano capacitado y profesional'])">
           <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80" alt="SAI">
-            <div class="card-overlay">Atención Integral (SAI)</div>
+            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80" alt="Atención Integral SAI">
+            <div class="card-overlay">
+              <span>Atención Integral (SAI)</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
           </div>
         </div>
 
-        <div class="card-item" onclick="openModal('Odontología', 'Cuidado bucal integral, prevención, profilaxis y tratamiento dental especializado.')">
+        <div class="card-item" onclick="openModal('Odontología', 'Cuidado bucal especializado para mantener la salud, prevención y estética de su sonrisa con tecnología adecuada.', ['Limpieza profesional y profilaxis bucal', 'Evaluación y tratamiento de caries', 'Extracciones y restauraciones dentales', 'Prevención y orientación para la higiene bucal'])">
           <div class="card-img-wrapper">
             <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Odontología">
-            <div class="card-overlay">Odontología</div>
+            <div class="card-overlay">
+              <span>Odontología</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
           </div>
         </div>
 
-        <div class="card-item" onclick="openModal('Ginecología y Obstetricia', 'Atención especializada en la salud integral de la mujer, control prenatal y ginecológico.')">
+        <div class="card-item" onclick="openModal('Ginecología y Obstetricia', 'Atención médica especializada dedicada a la salud integral de la mujer en todas las etapas de su vida, incluyendo el seguimiento durante la gestación.', ['Control prenatal y seguimiento de embarazo', 'Evaluación y chequeo ginecológico preventivo', 'Detección temprana y prevención de patologías', 'Planificación familiar y orientación femenina'])">
           <div class="card-img-wrapper">
             <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80" alt="Ginecología y Obstetricia">
-            <div class="card-overlay">Ginecología y Obstetricia</div>
+            <div class="card-overlay">
+              <span>Ginecología y Obstetricia</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
           </div>
         </div>
 
-        <div class="card-item" onclick="openModal('Pediatría', 'Atención médica especializada para el cuidado, desarrollo y salud de los niños.')">
+        <div class="card-item" onclick="openModal('Pediatría', 'Servicio médico dedicado exclusivamente a la salud, crecimiento adecuado y bienestar de recién nacidos, niños y adolescentes.', ['Evaluación del desarrollo y crecimiento infantil', 'Atención de enfermedades pediátricas comunes', 'Orientación nutricional e higiene infantil', 'Cuidado médico preventivo para niños'])">
           <div class="card-img-wrapper">
             <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80" alt="Pediatría">
-            <div class="card-overlay">Pediatría</div>
+            <div class="card-overlay">
+              <span>Pediatría</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
           </div>
         </div>
       </div>
@@ -561,45 +612,63 @@
     <section id="servicios" class="page-section">
       <h3 class="section-title">Servicios Médicos</h3>
       <div class="grid-cards">
-        <div class="card-item" onclick="openModal('Medicina General', 'Evaluación médica preventiva y diagnóstico general.')">
+        <div class="card-item" onclick="openModal('Medicina General', 'Atención diagnóstica y tratamiento preventivo para garantizar el bienestar general del paciente.', ['Chequeos generales de salud', 'Diagnóstico inicial y manejo de dolencias', 'Referencia médica especializada'])">
           <div class="card-img-wrapper">
             <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80" alt="Medicina General">
-            <div class="card-overlay">Medicina General</div>
+            <div class="card-overlay">
+              <span>Medicina General</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
           </div>
         </div>
 
-        <div class="card-item" onclick="openModal('Odontología', 'Cuidado bucal integral y profilaxis.')">
+        <div class="card-item" onclick="openModal('Odontología', 'Cuidado integral de la salud bucal con tratamientos profilácticos y correctivos.', ['Profilaxis bucal y limpieza dental', 'Restauraciones y tratamiento de caries', 'Prevención de enfermedades de encías'])">
           <div class="card-img-wrapper">
             <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Odontología">
-            <div class="card-overlay">Odontología</div>
+            <div class="card-overlay">
+              <span>Odontología</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
           </div>
         </div>
 
-        <div class="card-item" onclick="openModal('Ginecología y Obstetricia', 'Control ginecológico, seguimiento prenatal y atención integral a la mujer.')">
+        <div class="card-item" onclick="openModal('Ginecología y Obstetricia', 'Servicios de salud integral reproductiva y seguimiento embarazos.', ['Control prenatal estricto', 'Evaluación ginecológica general', 'Orientación en salud reproductiva'])">
           <div class="card-img-wrapper">
             <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80" alt="Ginecología y Obstetricia">
-            <div class="card-overlay">Ginecología y Obstetricia</div>
+            <div class="card-overlay">
+              <span>Ginecología y Obstetricia</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
           </div>
         </div>
 
-        <div class="card-item" onclick="openModal('Pediatría', 'Control de crecimiento, desarrollo infanto-juvenil y atención preventiva.')">
+        <div class="card-item" onclick="openModal('Pediatría', 'Atención integral para garantizar el crecimiento sano de infantes y jóvenes.', ['Monitoreo de peso y crecimiento', 'Diagnóstico de infecciones infantiles', 'Orientación para padres'])">
           <div class="card-img-wrapper">
             <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=800&q=80" alt="Pediatría">
-            <div class="card-overlay">Pediatría</div>
+            <div class="card-overlay">
+              <span>Pediatría</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
           </div>
         </div>
 
-        <div class="card-item" onclick="openModal('Psicología', 'Orientación, soporte emocional y atención de salud mental especializada.')">
+        <div class="card-item" onclick="openModal('Psicología', 'Soporte emocional y acompañamiento profesional para la salud mental.', ['Terapia individual y apoyo emocional', 'Manejo de ansiedad y estrés', 'Orientación psicológica integral'])">
           <div class="card-img-wrapper">
             <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Psicología">
-            <div class="card-overlay">Psicología</div>
+            <div class="card-overlay">
+              <span>Psicología</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
           </div>
         </div>
 
-        <div class="card-item" onclick="openModal('Laboratorio Clínico', 'Análisis clínicos y pruebas de diagnóstico de alta precisión.')">
+        <div class="card-item" onclick="openModal('Laboratorio Clínico', 'Pruebas clínicas con altos estándares de calidad y confidencialidad.', ['Toma de muestras sanguíneas', 'Exámenes de química clínica', 'Entrega oportuna de resultados'])">
           <div class="card-img-wrapper">
             <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Laboratorio Clínico">
-            <div class="card-overlay">Laboratorio Clínico</div>
+            <div class="card-overlay">
+              <span>Laboratorio Clínico</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
           </div>
         </div>
       </div>
@@ -723,19 +792,24 @@
     </form>
   </template>
 
-  <!-- BOTÓN FLOTANTE ANBA A (Pòtopòt sou telefòn sèlman) -->
+  <!-- BOTÓN FLOTANTE ANBA A (Sou telefòn sèlman) -->
   <div class="bottom-bar">
     <a href="tel:8096821234" class="bottom-btn btn-phone"><i class="fa-solid fa-phone"></i> (809) 682-1234</a>
     <a onclick="showSection('cita')" class="bottom-btn btn-online"><i class="fa-regular fa-calendar-check"></i> Cita en línea</a>
   </div>
 
-  <!-- MODAL POPUP -->
+  <!-- MODAL POPUP DETAYE -->
   <div id="serviceModal" class="modal">
     <div class="modal-content">
       <span class="close-btn" onclick="closeModal()">&times;</span>
-      <h3 id="modalTitle" style="color: var(--primary); margin-bottom: 15px;"></h3>
-      <p id="modalBody" style="font-size: 1rem; color: var(--gray);"></p>
-      <button class="btn-submit" style="margin-top: 20px;" onclick="closeModal(); showSection('cita');">Solicitar Cita</button>
+      <h3 id="modalTitle" style="color: var(--primary); margin-bottom: 12px; font-size: 1.4rem; font-weight: 700;"></h3>
+      <p id="modalBody" style="font-size: 0.98rem; color: var(--dark); line-height: 1.6;"></p>
+      
+      <div id="modalListContainer"></div>
+
+      <button class="btn-submit" style="margin-top: 15px;" onclick="closeModal(); showSection('cita');">
+        <i class="fa-regular fa-calendar-check"></i> Agendar Cita para este Servicio
+      </button>
     </div>
   </div>
 
@@ -767,9 +841,24 @@
       window.scrollTo(0, 0);
     }
 
-    function openModal(title, text) {
+    function openModal(title, description, detailsArray) {
       document.getElementById('modalTitle').innerText = title;
-      document.getElementById('modalBody').innerText = text;
+      document.getElementById('modalBody').innerText = description;
+      
+      const listContainer = document.getElementById('modalListContainer');
+      listContainer.innerHTML = '';
+      
+      if (detailsArray && detailsArray.length > 0) {
+        const ul = document.createElement('ul');
+        ul.className = 'modal-body-list';
+        detailsArray.forEach(item => {
+          const li = document.createElement('li');
+          li.innerHTML = '<i class="fa-solid fa-circle-check" style="color: var(--secondary); margin-right: 8px;"></i>' + item;
+          ul.appendChild(li);
+        });
+        listContainer.appendChild(ul);
+      }
+
       document.getElementById('serviceModal').style.display = 'flex';
     }
 
