@@ -14,7 +14,7 @@
       --primary: #008080;
       --primary-dark: #005959;
       --secondary: #00a896;
-      --accent: #0284c7;
+      --accent: #0284c7; /* Ble ki nan bouton anba a */
       --dark: #0f172a;
       --light: #f4f7f6;
       --white: #ffffff;
@@ -31,16 +31,20 @@
     }
 
     body {
-      background-color: var(--light);
+      /* FON MEDIKAL SOU TOUT PAJ LA */
+      background-color: #e0f2fe;
+      background-image: radial-gradient(#0284c7 0.75px, transparent 0.75px), radial-gradient(#0284c7 0.75px, #e0f2fe 0.75px);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
       color: var(--dark);
       line-height: 1.6;
-      padding-bottom: 70px;
+      padding-bottom: 70px; /* Pou ba mobil lan pa kouvri footer a */
     }
 
-    /* HEADER & NAVIGATION */
+    /* HEADER & NAVIGATION KOWIJE */
     header {
-      background: var(--white);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      background: var(--accent); /* Koulè ble jan ou mande l la */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -50,7 +54,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 5%;
+      padding: 12px 5%;
       max-width: 1400px;
       margin: 0 auto;
     }
@@ -61,9 +65,10 @@
       gap: 12px;
     }
 
+    /* KARE POU LOGO A AK IMAJ SANTE PWOVIZWA */
     .logo-icon {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: var(--white);
+      background: var(--white);
+      color: var(--accent);
       width: 48px;
       height: 48px;
       border-radius: 10px;
@@ -71,48 +76,56 @@
       align-items: center;
       justify-content: center;
       font-size: 1.5rem;
+      overflow: hidden;
     }
 
+    .logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* TÈKS YO KI VIN BLAN BAN-ANBALAZ */
     .logo-title h1 {
-      font-size: 1.25rem;
-      color: var(--primary);
+      font-size: 1.15rem;
+      color: var(--white);
       font-weight: 700;
       line-height: 1.1;
     }
 
     .logo-title p {
-      font-size: 0.8rem;
-      color: var(--gray);
-      font-weight: 500;
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 400;
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
     }
 
     .btn-top-cita {
-      background: var(--primary);
-      color: var(--white);
-      padding: 10px 20px;
+      background: var(--white);
+      color: var(--accent);
+      padding: 8px 18px;
       border-radius: 20px;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
+      font-weight: 700;
+      font-size: 0.85rem;
       cursor: pointer;
       transition: 0.3s;
     }
 
     .btn-top-cita:hover {
-      background: var(--primary-dark);
+      background: rgba(255, 255, 255, 0.9);
     }
 
     .menu-toggle {
       background: none;
       border: none;
       font-size: 1.6rem;
-      color: var(--primary);
+      color: var(--white);
       cursor: pointer;
     }
 
@@ -123,7 +136,7 @@
       top: 100%;
       left: 0;
       width: 100%;
-      background: var(--white);
+      background: var(--accent);
       box-shadow: 0 10px 15px rgba(0,0,0,0.1);
       padding: 15px 5%;
       list-style: none;
@@ -136,7 +149,7 @@
 
     .nav-links a {
       text-decoration: none;
-      color: var(--dark);
+      color: var(--white);
       font-weight: 600;
       font-size: 1rem;
       cursor: pointer;
@@ -144,10 +157,10 @@
     }
 
     .nav-links a:hover, .nav-links a.active {
-      color: var(--primary);
+      opacity: 0.8;
     }
 
-    /* SECTIONS MANAGER */
+    /* CONTAINER PRINCIPAL */
     .container {
       width: 92%;
       max-width: 1400px;
@@ -207,7 +220,7 @@
     /* CARDS */
     .section-title {
       font-size: 1.8rem;
-      color: var(--primary);
+      color: var(--primary-dark);
       margin-bottom: 30px;
       text-align: center;
       font-weight: 700;
@@ -276,7 +289,7 @@
       transform: translateX(4px);
     }
 
-    /* NOSOTROS SECTION STYLES */
+    /* NOSOTROS SECTION */
     .about-card {
       background: var(--white);
       padding: 35px;
@@ -396,7 +409,49 @@
       background: var(--primary-dark);
     }
 
-    /* BOTTOM FIXED BAR */
+    /* FOOTER ANBA NET LA */
+    footer {
+      background: var(--dark);
+      color: var(--white);
+      padding: 35px 5% 25px 5%;
+      text-align: center;
+      margin-top: 50px;
+      border-top: 3px solid var(--accent);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .footer-email {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+
+    .footer-email:hover {
+      color: var(--white);
+    }
+
+    .footer-rights {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-top: 10px;
+    }
+
+    /* BOTTOM FIXED BAR (MOBIL SELMAN) */
     .bottom-bar {
       position: fixed;
       bottom: 0;
@@ -486,7 +541,6 @@
       font-size: 0.95rem;
     }
 
-    /* DESKTOP RESPONSIVE ADJUSTMENTS */
     @media(min-width: 768px) {
       .nav-links {
         display: flex !important;
@@ -509,7 +563,10 @@
   <header>
     <nav>
       <div class="logo-container">
-        <div class="logo-icon"><i class="fa-solid fa-hospital"></i></div>
+        <!-- IMAJ SANTE PWOVIZWA NAN KARE A -->
+        <div class="logo-icon">
+          <i class="fa-solid fa-heart-pulse"></i>
+        </div>
         <div class="logo-title">
           <h1>CLINICA MOSCTHA - CENCI</h1>
           <p>Centro de Salud Integral la Solidaridad</p>
@@ -604,7 +661,6 @@
         </div>
       </div>
 
-      <!-- FÒM NAN PAJ INICIO -->
       <div class="form-card" id="form-inicio-container"></div>
     </section>
 
@@ -720,6 +776,15 @@
     </section>
 
   </div>
+
+  <!-- FOOTER ANBA NET LA -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-title">CLINICA MOSCTHA - CENCI</div>
+      <a href="mailto:contacto@clinicacenci.com" class="footer-email"><i class="fa-regular fa-envelope"></i> contacto@clinicacenci.com</a>
+      <div class="footer-rights">© 2026 CLINICA MOSCTHA - CENCI. Todos los derechos reservados.</div>
+    </div>
+  </footer>
 
   <!-- TEMPLATE FÒM -->
   <template id="appointment-form-template">
