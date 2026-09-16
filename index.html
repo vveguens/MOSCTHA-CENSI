@@ -248,6 +248,70 @@
       font-size: 1.1rem;
     }
 
+    /* NOSOTROS SECTION STYLES */
+    .about-card {
+      background: var(--white);
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+
+    .about-card h4 {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mv-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .values-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .value-tag {
+      background: #e0f2fe;
+      color: var(--accent);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .president-box {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: var(--white);
+      padding: 20px;
+      border-radius: 14px;
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .president-box h5 {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .president-box p {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
     /* FORMULARIO */
     .form-card {
       background: var(--white);
@@ -446,6 +510,27 @@
             <div class="card-overlay">Atención Integral (SAI)</div>
           </div>
         </div>
+
+        <div class="card-item" onclick="openModal('Odontología', 'Cuidado bucal integral, prevención, profilaxis y tratamiento dental especializado.')">
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80" alt="Odontología">
+            <div class="card-overlay">Odontología</div>
+          </div>
+        </div>
+
+        <div class="card-item" onclick="openModal('Ginecología y Obstetricia', 'Atención especializada en la salud integral de la mujer, control prenatal y ginecológico.')">
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80" alt="Ginecología y Obstetricia">
+            <div class="card-overlay">Ginecología y Obstetricia</div>
+          </div>
+        </div>
+
+        <div class="card-item" onclick="openModal('Pediatría', 'Atención médica especializada para el cuidado, desarrollo y salud de los niños.')">
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80" alt="Pediatría">
+            <div class="card-overlay">Pediatría</div>
+          </div>
+        </div>
       </div>
 
       <!-- FÒM NAN PAJ INICIO -->
@@ -458,14 +543,43 @@
       <div class="grid-cards">
         <div class="card-item" onclick="openModal('Medicina General', 'Evaluación médica preventiva y diagnóstico general.')">
           <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80" alt="Medicina">
+            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80" alt="Medicina General">
             <div class="card-overlay">Medicina General</div>
           </div>
         </div>
+
         <div class="card-item" onclick="openModal('Odontología', 'Cuidado bucal integral y profilaxis.')">
           <div class="card-img-wrapper">
             <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80" alt="Odontología">
             <div class="card-overlay">Odontología</div>
+          </div>
+        </div>
+
+        <div class="card-item" onclick="openModal('Ginecología y Obstetricia', 'Control ginecológico, seguimiento prenatal y atención integral a la mujer.')">
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80" alt="Ginecología y Obstetricia">
+            <div class="card-overlay">Ginecología y Obstetricia</div>
+          </div>
+        </div>
+
+        <div class="card-item" onclick="openModal('Pediatría', 'Control de crecimiento, desarrollo infanto-juvenil y atención preventiva.')">
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=600&q=80" alt="Pediatría">
+            <div class="card-overlay">Pediatría</div>
+          </div>
+        </div>
+
+        <div class="card-item" onclick="openModal('Psicología', 'Orientación, soporte emocional y atención de salud mental especializada.')">
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Psicología">
+            <div class="card-overlay">Psicología</div>
+          </div>
+        </div>
+
+        <div class="card-item" onclick="openModal('Laboratorio Clínico', 'Análisis clínicos y pruebas de diagnóstico de alta precisión.')">
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80" alt="Laboratorio Clínico">
+            <div class="card-overlay">Laboratorio Clínico</div>
           </div>
         </div>
       </div>
@@ -474,8 +588,40 @@
     <!-- SECCIÓN: NOSOTROS -->
     <section id="nosotros" class="page-section">
       <h3 class="section-title">Sobre Nosotros</h3>
-      <div style="background: white; padding: 20px; border-radius: 12px; font-size: 0.95rem;">
-        <p><strong>MOSCTHA - CENCI</strong> es una institución comprometida con la salud pública y el desarrollo comunitario integral, ofreciendo servicios médicos de calidad accesibles para todos.</p>
+      
+      <div class="about-card">
+        <h4><i class="fa-solid fa-users-rectangle"></i> ¿Quiénes Somos?</h4>
+        <p><strong>MOSCTHA</strong> es una organización sin fines de lucro con más de 35 años desarrollando proyectos y programas de desarrollo comunitario integral en la República Dominicana. Fundada en 1985 con la misión de mejorar la calidad de vida de la población más vulnerable.</p>
+        <p style="margin-top: 10px;">El <strong>Centro de Atención Integral La Solidaridad (CENCI)</strong>, incorporado por el Movimiento Socio-Cultural para los Trabajadores Haitianos, está habilitado por la Dirección General de Habilitación y Acreditación del Ministerio de Salud Pública de la República Dominicana (<strong>Habilitación Sectorial No. 0249-2021 | Ley No. 122-05</strong>).</p>
+      </div>
+
+      <div class="mv-grid">
+        <div class="about-card" style="margin-bottom: 0;">
+          <h4><i class="fa-solid fa-bullseye"></i> Misión</h4>
+          <p>Ser un centro de salud que ofrezca servicios de salud integral, oportuna y eficiente con los mayores niveles de calidad a la población que requiere nuestro servicio.</p>
+        </div>
+
+        <div class="about-card" style="margin-bottom: 0;">
+          <h4><i class="fa-solid fa-eye"></i> Visión</h4>
+          <p>Ser una institución prestadora de servicio de salud reconocida en la implementación de programas de salud que ayuden a mejorar la calidad de vida de la población meta.</p>
+        </div>
+      </div>
+
+      <div class="about-card">
+        <h4><i class="fa-solid fa-hand-holding-heart"></i> Nuestros Valores</h4>
+        <div class="values-list">
+          <span class="value-tag"><i class="fa-solid fa-check-circle"></i> Igualdad</span>
+          <span class="value-tag"><i class="fa-solid fa-check-circle"></i> Honestidad</span>
+          <span class="value-tag"><i class="fa-solid fa-check-circle"></i> Calidad</span>
+          <span class="value-tag"><i class="fa-solid fa-check-circle"></i> Vocación de Servicio</span>
+          <span class="value-tag"><i class="fa-solid fa-check-circle"></i> Lealtad</span>
+        </div>
+      </div>
+
+      <div class="president-box">
+        <h5>Dr. Cherubin Joseph</h5>
+        <p>Presidente del Consejo Directivo</p>
+        <p style="font-weight: 600; font-size: 0.9rem; margin-top: 4px;">CLINICA MOSCTHA - CENCI</p>
       </div>
     </section>
 
@@ -528,6 +674,7 @@
           <option value="Odontología">Odontología</option>
           <option value="Ginecología y Obstetricia">Ginecología y Obstetricia</option>
           <option value="Pediatría">Pediatría</option>
+          <option value="Psicología">Psicología</option>
           <option value="Seguimiento-ARV">Seguimiento-ARV</option>
           <option value="Laboratorio Clínico">Laboratorio Clínico</option>
         </select>
