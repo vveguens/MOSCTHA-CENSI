@@ -440,14 +440,21 @@
       background: var(--primary-dark);
     }
 
-    /* ESTILOS WIDGET NOTICIAS Y SALUD */
+    /* SEPARATE NEWS BOX DESIGN (KAD SEPARE KI CHANGER CHAK 6 SEKOND) */
+    .health-news-wrapper {
+      max-width: 850px;
+      margin: 25px auto 0 auto;
+    }
+
     .health-news-box {
-      margin-top: 25px;
-      background: linear-gradient(135deg, #0284c7, #008080);
+      background: linear-gradient(135deg, #008080, #0284c7);
       color: var(--white);
-      padding: 22px 25px;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,128,128,0.25);
+      padding: 24px 28px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,128,128,0.22);
+      border: 1px solid rgba(255,255,255,0.2);
+      position: relative;
+      overflow: hidden;
     }
 
     .health-news-header {
@@ -455,12 +462,12 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid rgba(255,255,255,0.25);
-      padding-bottom: 10px;
-      margin-bottom: 14px;
+      padding-bottom: 12px;
+      margin-bottom: 15px;
     }
 
     .health-news-header span.tag {
-      background: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.22);
       padding: 4px 12px;
       border-radius: 20px;
       font-size: 0.82rem;
@@ -470,19 +477,47 @@
     }
 
     .health-news-title {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: #fef08a;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
       gap: 10px;
+      transition: opacity 0.4s ease;
     }
 
     .health-news-content {
-      font-size: 0.96rem;
+      font-size: 0.98rem;
       line-height: 1.6;
-      color: #f1f5f9;
+      color: #f8fafc;
+      transition: opacity 0.4s ease;
+      min-height: 50px;
+    }
+
+    .news-fade {
+      opacity: 0;
+    }
+
+    .news-indicators {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-top: 15px;
+    }
+
+    .news-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      transition: all 0.3s ease;
+    }
+
+    .news-dot.active {
+      background: #fef08a;
+      width: 22px;
+      border-radius: 10px;
     }
 
     footer {
@@ -718,7 +753,25 @@
         </div>
       </div>
 
+      <!-- FORMULARIO CITA -->
       <div class="form-card" id="form-inicio-container"></div>
+
+      <!-- BWAT NOTICIAS SEPARE ANBA FORM LA -->
+      <div class="health-news-wrapper">
+        <div class="health-news-box">
+          <div class="health-news-header">
+            <span style="font-size: 0.88rem; font-weight: 600;"><i class="fa-solid fa-bullhorn" style="margin-right: 6px;"></i> Salud Pública & Prevención</span>
+            <span class="tag widget-date-label"></span>
+          </div>
+          <div class="health-news-title" id="news-title-el">
+            <i class="fa-solid fa-shield-heart"></i>
+            <span class="widget-news-title"></span>
+          </div>
+          <p class="health-news-content widget-news-body" id="news-body-el"></p>
+          
+          <div class="news-indicators" id="news-dots-container"></div>
+        </div>
+      </div>
     </section>
 
     <!-- SECCIÓN: SERVICIOS -->
@@ -803,7 +856,7 @@
     </div>
   </footer>
 
-  <!-- TEMPLATE FORMULARIO + TI WIDGET SALUD PUPLICA ANBA L -->
+  <!-- TEMPLATE FORMULARIO -->
   <template id="appointment-form-template">
     <h3 style="color: var(--primary); text-align: center; margin-bottom: 20px; font-weight: 700; font-size: 1.6rem;">Solicitar Cita Médica</h3>
     
@@ -873,19 +926,6 @@
 
       <button type="submit" class="btn-submit">Enviar Solicitud de Cita</button>
     </form>
-
-    <!-- TI WIDGET NOTICIAS Y SALUD PÚBLICA -->
-    <div class="health-news-box">
-      <div class="health-news-header">
-        <span style="font-size: 0.88rem; font-weight: 600;"><i class="fa-solid fa-bullhorn" style="margin-right: 6px;"></i> Salud Pública & Prevención</span>
-        <span class="tag widget-date-label"></span>
-      </div>
-      <div class="health-news-title">
-        <i class="fa-solid fa-shield-heart"></i>
-        <span class="widget-news-title"></span>
-      </div>
-      <p class="health-news-content widget-news-body"></p>
-    </div>
   </template>
 
   <!-- BOTÓN FLOTANTE MOBIL -->
@@ -912,40 +952,42 @@
 </div>
 
 <script>
-  // URL AK DEPLOYMENT ID NOUVO KÒD SCRIPT GOOGLE LA
+  // URL GOOGLE SCRIPT BACKEND
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby5XXSSdJqiH22_K-dyXYX3rQQ-Ag-Sn5FrYM50gGHHMN4E2mWQb-e-FHCNx5uSPmMB/exec";
 
-  // LISTA DE NOTICIAS / CONSEJOS DE SALUD PÚBLICA RD QUE CAMBIAN AUTOMÁTICAMENTE
+  // MULTIPLE NOTICIAS Y CONSEJOS DE SALUD
   const noticiasSaludRD = [
     {
       title: "Cuidado de la Hidratación y Salud Cardiovascular",
-      body: "Para evitar complicaciones vasculares y mantener una presión arterial óptima, se aconseja consumir suficiente agua y reducir la ingesta de sodio diaria en sus alimentos."
+      body: "Para evitar complicaciones vasculares y mantener una presión arterial óptima, se aconseja consumir suficiente agua diariamente y reducir el consumo excesivo de sal."
     },
     {
       title: "Prevención Comunitaria contra el Dengue",
-      body: "Mantenga limpios los entornos del hogar y elimine recipientes con agua estancada. La prevención contra criaderos de mosquitos es clave en la salud comunitaria."
+      body: "Mantenga limpios los entornos del hogar y elimine recipientes con agua estancada. La eliminación de criaderos de mosquitos es fundamental."
     },
     {
       title: "Chequeos Médicos Preventivos e Higiene Alimentaria",
-      body: "Recuerde realizar sus análisis clínicos periódicos y mantener una adecuada desinfección en la preparación de alimentos para prevenir infecciones digestivas."
+      body: "Realice sus análisis clínicos periódicos y mantenga la higiene en la manipulación de alimentos para prevenir infecciones gastrointestinales."
     },
     {
       title: "Importancia del Esquema de Vacunación Familiar",
-      body: "Asegúrese de contar con las dosis de vacunación al día para niños y adultos mayores. Mantener el esquema completo previene brotes virales en la comunidad."
+      body: "Asegúrese de contar con las dosis de vacunación al día para niños y adultos mayores para prevenir brotes infecciosos comunitarios."
     },
     {
       title: "Salud Mental y Manejo del Estrés Cotidiano",
-      body: "El bienestar integral abarca también la salud emocional. Realizar pausas activas durante la jornada y mantener un descanso reparador fortalece el sistema inmunológico."
+      body: "Tomarse pausas activas durante el trabajo y descansar adecuadamente ayuda a reducir el estrés y fortalece la respuesta inmunológica."
     },
     {
       title: "Higiene de Manos y Prevención Infecciosa",
-      body: "El lavado frecuente de manos con agua y jabón por al menos 20 segundos continúa siendo la barrera de protección primaria más eficaz contra gérmenes."
+      body: "El lavado constante de manos con agua y jabón por al menos 20 segundos continúa siendo la principal barrera de prevención contra virus."
     },
     {
-      title: "Actividad Física y Hábitos de Vida Saludable",
-      body: "Treinta minutos de caminata o ejercicio moderado al día contribuyen a mantener el peso adecuado y previenen la hipertensión y diabetes."
+      title: "Actividad Física y Prevención de Hipertensión",
+      body: "Treinta minutos de caminata o ejercicio moderado diario ayudan a controlar los niveles de glucosa y protegen la salud del corazón."
     }
   ];
+
+  let currentNewsIndex = 0;
 
   document.addEventListener("DOMContentLoaded", function() {
     const template = document.getElementById('appointment-form-template').content;
@@ -954,20 +996,58 @@
     document.getElementById('form-cita-container').appendChild(template.cloneNode(true));
 
     attachFormEvents();
-    cargarNoticiasAutomaticas();
+    initNewsCarousel();
   });
 
-  function cargarNoticiasAutomaticas() {
+  function initNewsCarousel() {
     const hoy = new Date();
-    const diaSemana = hoy.getDay(); // 0 a 6
     const opcionesFecha = { weekday: 'short', day: 'numeric', month: 'short' };
     const fechaTexto = hoy.toLocaleDateString('es-DO', opcionesFecha);
 
-    const noticiaDelDia = noticiasSaludRD[diaSemana];
-
     document.querySelectorAll('.widget-date-label').forEach(el => el.innerText = fechaTexto);
-    document.querySelectorAll('.widget-news-title').forEach(el => el.innerText = noticiaDelDia.title);
-    document.querySelectorAll('.widget-news-body').forEach(el => el.innerText = noticiaDelDia.body);
+
+    // KREYE TI PUNTOS (DOTS) YO OTOMATIKMAN
+    const dotsContainer = document.getElementById('news-dots-container');
+    dotsContainer.innerHTML = '';
+    noticiasSaludRD.forEach((_, idx) => {
+      const dot = document.createElement('div');
+      dot.className = `news-dot ${idx === 0 ? 'active' : ''}`;
+      dotsContainer.appendChild(dot);
+    });
+
+    renderNewsIndex(0);
+
+    // CHANGER NOTICIAS AUTOMÁTICAMENTE CHAK 6 SEKOND (6000ms)
+    setInterval(() => {
+      currentNewsIndex = (currentNewsIndex + 1) % noticiasSaludRD.length;
+      renderNewsIndex(currentNewsIndex);
+    }, 6000);
+  }
+
+  function renderNewsIndex(index) {
+    const titleEl = id => document.getElementById(id);
+    const titleBox = titleEl('news-title-el');
+    const bodyBox = titleEl('news-body-el');
+
+    if (!titleBox || !bodyBox) return;
+
+    // TI EFFECT TRANSITION
+    titleBox.classList.add('news-fade');
+    bodyBox.classList.add('news-fade');
+
+    setTimeout(() => {
+      const item = noticiasSaludRD[index];
+      titleBox.querySelector('.widget-news-title').innerText = item.title;
+      bodyBox.innerText = item.body;
+
+      titleBox.classList.remove('news-fade');
+      bodyBox.classList.remove('news-fade');
+
+      // UPDATE DOTS
+      document.querySelectorAll('.news-dot').forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === index);
+      });
+    }, 300);
   }
 
   function toggleMenu() {
