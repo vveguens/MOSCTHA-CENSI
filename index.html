@@ -308,6 +308,48 @@
       transform: translateX(4px);
     }
 
+    /* GALERIA STYLES */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .gallery-card {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-caption {
+      padding: 15px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--primary-dark);
+      font-size: 0.95rem;
+    }
+
     /* NOSOTROS SECTION */
     .about-card {
       background: var(--white);
@@ -575,7 +617,7 @@
       display: none;
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.85);
       z-index: 2000;
       justify-content: center;
       align-items: center;
@@ -591,12 +633,29 @@
       position: relative;
     }
 
+    .modal-img-preview {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 12px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    }
+
     .close-btn {
       position: absolute;
       top: 15px; right: 20px;
       font-size: 1.8rem;
       cursor: pointer;
       color: var(--gray);
+    }
+
+    .close-btn-img {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 35px;
+      font-weight: bold;
+      cursor: pointer;
     }
 
     @media(min-width: 992px) {
@@ -637,6 +696,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a onclick="showSection('inicio')" id="nav-inicio" class="active">Inicio</a></li>
         <li><a onclick="showSection('servicios')" id="nav-servicios">Servicios</a></li>
+        <li><a onclick="showSection('galeria')" id="nav-galeria">Galería</a></li>
         <li><a onclick="showSection('nosotros')" id="nav-nosotros">Nosotros</a></li>
         <li><a onclick="showSection('cita')" id="nav-cita">Solicitar Cita</a></li>
       </ul>
@@ -792,6 +852,79 @@
       </div>
     </section>
 
+    <!-- SECCIÓN: GALERÍA -->
+    <section id="galeria" class="page-section">
+      <h3 class="section-title">Galería de Fotos</h3>
+      <p class="section-subtitle">Conozca nuestras instalaciones, personal e momentos destacados.</p>
+      
+      <div class="gallery-grid">
+        <div class="gallery-card" onclick="openImageModal('IMG_2684.jpeg')">
+          <img src="IMG_2684.jpeg" alt="Inauguración">
+          <div class="gallery-caption">Inauguración</div>
+        </div>
+        <div class="gallery-card" onclick="openImageModal('IMG_2683.jpeg')">
+          <img src="IMG_2683.jpeg" alt="Equipo de Trabajo">
+          <div class="gallery-caption">Equipo de Trabajo</div>
+        </div>
+        <div class="gallery-card" onclick="openImageModal('IMG_2700.jpeg')">
+          <img src="IMG_2700.jpeg" alt="Personal Médico">
+          <div class="gallery-caption">Personal Médico</div>
+        </div>
+        <div class="gallery-card" onclick="openImageModal('IMG_2664.jpeg')">
+          <img src="IMG_2664.jpeg" alt="Centro de Salud">
+          <div class="gallery-caption">Centro de Salud La Solidaridad</div>
+        </div>
+        <div class="gallery-card" onclick="openImageModal('IMG_2697.jpeg')">
+          <img src="IMG_2697.jpeg" alt="Fachada Principal">
+          <div class="gallery-caption">Fachada Principal</div>
+        </div>
+        <div class="gallery-card" onclick="openImageModal('IMG_2663.jpeg')">
+          <img src="IMG_2663.jpeg" alt="Instalaciones">
+          <div class="gallery-caption">Instalaciones</div>
+        </div>
+        <div class="gallery-card" onclick="openImageModal('IMG_2661.jpeg')">
+          <img src="IMG_2661.jpeg" alt="Pacientes">
+          <div class="gallery-caption">Pacientes en Sala de Espera</div>
+        </div>
+        <div class="gallery-card" onclick="openImageModal('IMG_2660.jpeg')">
+          <img src="IMG_2660.jpeg" alt="Atención a Pacientes">
+          <div class="gallery-caption">Atención a Pacientes</div>
+        </div>
+        <div class="gallery-card" onclick="openImageModal('IMG_2686.jpeg')">
+          <img src="IMG_2686.jpeg" alt="Consultorio Medicina General">
+          <div class="gallery-caption">Consultorio Medicina General</div>
+        </div>
+        <div class="gallery-card" onclick="openImageModal('IMG_2687.jpeg')">
+          <img src="IMG_2687.jpeg" alt="Laboratorio & Química">
+          <div class="gallery-caption">Laboratorio & Química</div>
+        </div>
+        <div class="gallery-card" onclick="openImageModal('IMG_2688.jpeg')">
+          <img src="IMG_2688.jpeg" alt="Laboratorio">
+          <div class="gallery-caption">Laboratorio</div>
+        </div>
+        <div class="gallery-card" onclick="openImageModal('IMG_2689.jpeg')">
+          <img src="IMG_2689.jpeg" alt="Consultorio de Odontología">
+          <div class="gallery-caption">Consultorio de Odontología</div>
+        </div>
+        <div class="gallery-card" onclick="openImageModal('IMG_2690.jpeg')">
+          <img src="IMG_2690.jpeg" alt="Farmacia y Cocina">
+          <div class="gallery-caption">Farmacia / Cocina</div>
+        </div>
+        <div class="gallery-card" onclick="openImageModal('IMG_2691.jpeg')">
+          <img src="IMG_2691.jpeg" alt="Recepción">
+          <div class="gallery-caption">Recepción</div>
+        </div>
+        <div class="gallery-card" onclick="openImageModal('IMG_2693.jpeg')">
+          <img src="IMG_2693.jpeg" alt="Sala de Espera">
+          <div class="gallery-caption">Sala de Espera</div>
+        </div>
+        <div class="gallery-card" onclick="openImageModal('IMG_2694.jpeg')">
+          <img src="IMG_2694.jpeg" alt="Área de Urgencia">
+          <div class="gallery-caption">Área de Urgencia</div>
+        </div>
+      </div>
+    </section>
+
     <!-- SECCIÓN: NOSOTROS -->
     <section id="nosotros" class="page-section">
       <h3 class="section-title">Sobre Nosotros</h3>
@@ -817,7 +950,7 @@
       <div class="president-card">
         <img src="IMG_2682.jpeg" alt="Dr. Cherubin Joseph" class="president-img">
         <div class="president-info">
-          ##### Dr. Cherubin Joseph
+          <h5>Dr. Cherubin Joseph</h5>
           <p>Presidente del Consejo Directivo</p>
           <span style="display: block; color: var(--gray); font-size: 0.95rem; margin-top: 4px;">CLINICA MOSCTHA - CENCI</span>
         </div>
@@ -887,6 +1020,7 @@
           <option value="Cardiología">Cardiología</option>
           <option value="Dermatología">Dermatología</option>
           <option value="Oftalmología">Oftalmología</option>
+          <option value="Seguimiento (SAI)">Seguimiento (SAI)</option>
         </select>
       </div>
 
@@ -919,7 +1053,7 @@
     <a onclick="showSection('cita')" class="bottom-btn btn-online"><i class="fa-regular fa-calendar-check"></i> Cita en línea</a>
   </div>
 
-  <!-- MODAL POPUP -->
+  <!-- MODAL POPUP DETALLES DE SERVICIO -->
   <div id="serviceModal" class="modal">
     <div class="modal-content">
       <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -932,6 +1066,12 @@
         <i class="fa-regular fa-calendar-check"></i> Agendar Cita para este Servicio
       </button>
     </div>
+  </div>
+
+  <!-- MODAL POPUP PARA VER FOTO EN GRANDE (GALERÍA) -->
+  <div id="imageModal" class="modal" onclick="closeImageModal()">
+    <span class="close-btn-img">&times;</span>
+    <img id="modalImg" class="modal-img-preview" src="" alt="Vista ampliada">
   </div>
 
 </div>
@@ -1070,6 +1210,15 @@
 
   function closeModal() {
     document.getElementById('serviceModal').style.display = 'none';
+  }
+
+  function openImageModal(imgSrc) {
+    document.getElementById('modalImg').src = imgSrc;
+    document.getElementById('imageModal').style.display = 'flex';
+  }
+
+  function closeImageModal() {
+    document.getElementById('imageModal').style.display = 'none';
   }
 
   function attachFormEvents() {
