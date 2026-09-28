@@ -3,244 +3,1110 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galería - CLINICA MOSCTHA CENCI</title>
+  <title>CLINICA MOSCTHA - CENCI | Centro de Salud Integral la Solidaridad</title>
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
     :root {
-      --primary-color: #0d47a1;
-      --secondary-color: #00bfa5;
-      --bg-color: #f4f6f9;
-      --card-bg: #ffffff;
-      --text-color: #333333;
+      --primary: #008080;
+      --primary-dark: #005959;
+      --secondary: #00a896;
+      --accent: #0284c7;
+      --dark: #0f172a;
+      --light: #f4f7f6;
+      --white: #ffffff;
+      --gray: #64748b;
+      --border: #cbd5e1;
+      --success: #16a34a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      margin: 0;
-      padding: 0;
+      background: url('https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--dark);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    .gallery-container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
+    .body-overlay {
+      background: rgba(244, 247, 246, 0.92);
+      min-height: 100vh;
+      width: 100%;
+      padding-bottom: 20px;
     }
 
-    .gallery-title {
-      text-align: center;
-      color: var(--primary-color);
-      font-size: 2.2rem;
-      margin-bottom: 30px;
-      position: relative;
+    /* HEADER & NAVIGATION */
+    header {
+      background: var(--accent);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
     }
 
-    .gallery-title::after {
-      content: '';
-      width: 60px;
-      height: 4px;
-      background-color: var(--secondary-color);
-      display: block;
-      margin: 10px auto 0;
-      border-radius: 2px;
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 4%;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
     }
 
-    /* Grid Layout */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      user-select: none;
     }
 
-    .gallery-item {
-      background-color: var(--card-bg);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .logo-title h1 {
+      font-size: 1.2rem;
+      color: var(--white);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-title p {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 400;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-top-cita {
+      background: var(--white);
+      color: var(--accent);
+      padding: 8px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .btn-top-cita:hover {
+      background: #f0f9ff;
+      transform: translateY(-2px);
+    }
+
+    .menu-toggle {
+      background: none;
+      border: none;
+      font-size: 1.7rem;
+      color: var(--white);
       cursor: pointer;
     }
 
-    .gallery-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    .gallery-item img {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
       width: 100%;
-      height: 220px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
+      background: var(--accent);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      padding: 20px 5%;
+      list-style: none;
+      gap: 15px;
     }
 
-    .gallery-item:hover img {
-      transform: scale(1.05);
+    .nav-links.show {
+      display: flex;
     }
 
-    .gallery-caption {
-      padding: 15px;
-      text-align: center;
+    .nav-links a {
+      text-decoration: none;
+      color: var(--white);
       font-weight: 600;
-      color: var(--primary-color);
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      opacity: 0.85;
+      text-decoration: underline;
+    }
+
+    .container {
+      width: 95%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 30px 0;
+    }
+
+    .page-section {
+      display: none;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* HERO BANNER */
+    .hero-banner {
+      background: linear-gradient(rgba(0, 89, 89, 0.85), rgba(2, 132, 199, 0.85)), 
+                  url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1600&q=80') center/cover;
+      color: var(--white);
+      padding: 60px 30px;
+      border-radius: 22px;
+      text-align: center;
+      margin-bottom: 35px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    }
+
+    .hero-banner h2 {
+      font-size: 2.3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .hero-banner p {
+      font-size: 1.15rem;
+      opacity: 0.95;
+      margin-bottom: 25px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-hero {
+      background: #84cc16;
+      color: var(--dark);
+      padding: 14px 32px;
+      border-radius: 30px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      font-size: 1.05rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .btn-hero:hover {
+      transform: scale(1.04);
+      background: #9ef01a;
+    }
+
+    /* GRID CARDS */
+    .section-title {
+      font-size: 1.9rem;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--gray);
+      margin-bottom: 30px;
+      font-weight: 500;
       font-size: 1rem;
     }
 
-    /* Modal / Lightbox */
+    .grid-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .card-item {
+      background: var(--white);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      position: relative;
+      cursor: pointer;
+      transition: all 0.35s ease;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      flex: 1 1 300px;
+      max-width: 380px;
+    }
+
+    .card-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+    }
+
+    .card-img-wrapper {
+      height: 230px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .card-item:hover .card-img-wrapper img {
+      transform: scale(1.08);
+    }
+
+    .card-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+      padding: 22px 18px 12px 18px;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-arrow {
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.25);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .card-item:hover .card-arrow {
+      background: var(--primary);
+      transform: translateX(4px);
+    }
+
+    /* NOSOTROS SECTION */
+    .about-card {
+      background: var(--white);
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      margin-bottom: 25px;
+    }
+
+    .about-card h4 {
+      color: var(--primary);
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .about-card p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .mv-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-bottom: 25px;
+    }
+
+    .mv-grid .about-card {
+      flex: 1 1 350px;
+      margin-bottom: 0;
+    }
+
+    .president-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      margin-top: 25px;
+      border-left: 6px solid var(--primary);
+    }
+
+    .president-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--accent);
+    }
+
+    .president-info h5 {
+      font-size: 1.4rem;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .president-info p {
+      font-size: 1.05rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* FORMULARIO */
+    .form-card {
+      background: var(--white);
+      padding: 35px;
+      border-radius: 22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 2px solid var(--secondary);
+      margin-top: 20px;
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.98rem;
+      margin-bottom: 8px;
+      color: var(--primary-dark);
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      font-size: 1rem;
+      background: #f8fafc;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--primary);
+      color: var(--white);
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      background: var(--primary-dark);
+    }
+
+    /* SEPARATE NEWS BOX DESIGN */
+    .health-news-wrapper {
+      max-width: 850px;
+      margin: 25px auto 0 auto;
+    }
+
+    .health-news-box {
+      background: linear-gradient(135deg, #008080, #0284c7);
+      color: var(--white);
+      padding: 24px 28px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,128,128,0.22);
+      border: 1px solid rgba(255,255,255,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .health-news-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      padding-bottom: 12px;
+      margin-bottom: 15px;
+    }
+
+    .health-news-header span.tag {
+      background: rgba(255,255,255,0.22);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .health-news-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fef08a;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: opacity 0.4s ease;
+    }
+
+    .health-news-content {
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: #f8fafc;
+      transition: opacity 0.4s ease;
+      min-height: 50px;
+    }
+
+    .news-fade {
+      opacity: 0;
+    }
+
+    .news-indicators {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-top: 15px;
+    }
+
+    .news-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      transition: all 0.3s ease;
+    }
+
+    .news-dot.active {
+      background: #fef08a;
+      width: 22px;
+      border-radius: 10px;
+    }
+
+    footer {
+      background: var(--dark);
+      color: var(--white);
+      padding: 35px 5% 25px 5%;
+      text-align: center;
+      margin-top: 50px;
+      border-top: 4px solid var(--accent);
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: var(--white);
+      display: flex;
+      box-shadow: 0 -2px 12px rgba(0,0,0,0.12);
+      z-index: 999;
+    }
+
+    .bottom-btn {
+      flex: 1;
+      padding: 14px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .btn-phone { background: var(--primary); color: var(--white); }
+    .btn-online { background: var(--accent); color: var(--white); }
+
+    .alert-success {
+      display: none;
+      background: #dcfce7;
+      color: #15803d;
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
     .modal {
       display: none;
       position: fixed;
-      z-index: 1000;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.85);
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 2000;
       justify-content: center;
       align-items: center;
       padding: 20px;
     }
 
-    .modal img {
-      max-width: 90%;
-      max-height: 85vh;
-      border-radius: 8px;
-      box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    .modal-content {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 22px;
+      max-width: 600px;
+      width: 100%;
+      position: relative;
     }
 
-    .modal .close-btn {
+    .close-btn {
       position: absolute;
-      top: 20px;
-      right: 30px;
-      color: #fff;
-      font-size: 35px;
-      font-weight: bold;
+      top: 15px; right: 20px;
+      font-size: 1.8rem;
       cursor: pointer;
+      color: var(--gray);
+    }
+
+    @media(min-width: 992px) {
+      .nav-links {
+        display: flex !important;
+        position: static;
+        flex-direction: row;
+        box-shadow: none;
+        padding: 0;
+        width: auto;
+        gap: 25px;
+      }
+      .menu-toggle { display: none; }
+      .bottom-bar { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <div class="gallery-container">
-    <h2 class="gallery-title">Galería de Fotos</h2>
+<div class="body-overlay">
 
-    <div class="gallery-grid">
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <div class="logo-container" onclick="showSection('inicio')">
+        <img src="IMG_2851.jpeg" alt="Logo CENCI" style="width: 65px; height: 65px; object-fit: contain; background: white; border-radius: 4px; padding: 2px;">
+        <div class="logo-title">
+          <h1>CLINICA MOSCTHA - CENCI</h1>
+          <p>Centro de Salud Integral la Solidaridad</p>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <a onclick="showSection('cita')" class="btn-top-cita">Solicitar Cita</a>
+        <button class="menu-toggle" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a onclick="showSection('inicio')" id="nav-inicio" class="active">Inicio</a></li>
+        <li><a onclick="showSection('servicios')" id="nav-servicios">Servicios</a></li>
+        <li><a onclick="showSection('nosotros')" id="nav-nosotros">Nosotros</a></li>
+        <li><a onclick="showSection('cita')" id="nav-cita">Solicitar Cita</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <!-- SECCIÓN: INICIO -->
+    <section id="inicio" class="page-section active">
+      <div class="hero-banner">
+        <h2>Atención Médica de Calidad y Confianza</h2>
+        <p>Agende su cita médica en línea rápido y fácil sin hacer filas. Cuidamos de usted y de toda su familia.</p>
+        <button class="btn-hero" onclick="showSection('cita')"><i class="fa-regular fa-calendar-check"></i> Agendar Cita Ahora</button>
+      </div>
+
+      <h3 class="section-title">Servicios y Especialidades</h3>
+      <p class="section-subtitle">Seleccione una categoría para ver todos los detalles y agendar su cita.</p>
+
+      <div class="grid-cards">
+        <div class="card-item" onclick="openModal('Consulta General', 'Atención médica primaria integral para evaluar, diagnosticar y dar seguimiento a su salud general.', ['Evaluación clínica preventiva', 'Diagnóstico de enfermedades comunes', 'Seguimiento de salud familiar', 'Referencia a especialidades'])">
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Consulta General">
+            <div class="card-overlay">
+              <span>Consulta General</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-item" onclick="openModal('Pediatría', 'Atención médica integral dedicada al cuidado, crecimiento y salud de niños y adolescentes.', ['Monitoreo del crecimiento y peso', 'Atención de infecciones infantiles', 'Orientación de salud infantil'])">
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80" alt="Pediatría">
+            <div class="card-overlay">
+              <span>Pediatría</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-item" onclick="openModal('Odontología', 'Cuidado y prevención bucal especializada para una sonrisa sana y estética.', ['Limpieza profesional y profilaxis', 'Tratamiento de caries y restauraciones', 'Extracciones dentales'])">
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Odontología">
+            <div class="card-overlay">
+              <span>Odontología</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-item" onclick="openModal('Laboratorio Clínico', 'Equipos modernos y precisos para análisis sanguíneos, bioquímicos y clínicos completos con total confiabilidad.', ['Análisis de sangre y glucosa', 'Pruebas hormonales e infecciosas', 'Exámenes de orina y heces', 'Entrega rápida de resultados'])">
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=80" alt="Laboratorio Clínico">
+            <div class="card-overlay">
+              <span>Laboratorio Clínico</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-item" onclick="openModal('Ginecología', 'Cuidado integral de la salud femenina, chequeos preventivos y control prenatal.', ['Control de embarazo y prenatal', 'Chequeo ginecológico de rutina', 'Prevención de patologías femeninas'])">
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80" alt="Ginecología">
+            <div class="card-overlay">
+              <span>Ginecología</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-item" onclick="openModal('Cardiología', 'Evaluación y diagnóstico especializado de la salud cardiovascular y prevención arterial.', ['Electrocardiogramas', 'Evaluación de hipertensión arterial', 'Prevención de enfermedades cardíacas'])">
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?auto=format&fit=crop&w=800&q=80" alt="Cardiología">
+            <div class="card-overlay">
+              <span>Cardiología</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-item" onclick="openModal('Dermatología', 'Atención especializada para afecciones de la piel, cabello y uñas.', ['Diagnóstico de afecciones cutáneas', 'Tratamiento de acné y alergias', 'Cuidado preventivo de la piel'])">
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80" alt="Dermatología">
+            <div class="card-overlay">
+              <span>Dermatología</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-item" onclick="openModal('Oftalmología', 'Exámenes de la vista y salud ocular preventiva para mejorar su calidad visual.', ['Evaluación de la agudeza visual', 'Detección de problemas de refracción', 'Salud ocular preventiva'])">
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80" alt="Oftalmología">
+            <div class="card-overlay">
+              <span>Oftalmología</span>
+              <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORMULARIO CITA -->
+      <div class="form-card" id="form-inicio-container"></div>
+
+      <!-- BWAT NOTICIAS SEPARE ANBA FORM LA -->
+      <div class="health-news-wrapper">
+        <div class="health-news-box">
+          <div class="health-news-header">
+            <span style="font-size: 0.88rem; font-weight: 600;"><i class="fa-solid fa-bullhorn" style="margin-right: 6px;"></i> Salud Pública & Prevención</span>
+            <span class="tag widget-date-label"></span>
+          </div>
+          <div class="health-news-title" id="news-title-el">
+            <i class="fa-solid fa-shield-heart"></i>
+            <span class="widget-news-title"></span>
+          </div>
+          <p class="health-news-content widget-news-body" id="news-body-el"></p>
+          
+          <div class="news-indicators" id="news-dots-container"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: SERVICIOS -->
+    <section id="servicios" class="page-section">
+      <h3 class="section-title">Nuestros Servicios Médicos</h3>
+      <p class="section-subtitle">Ofrecemos un amplio abanico de servicios de salud preventiva y especializada.</p>
       
-      <!-- Inauguración -->
-      <div class="gallery-item" onclick="openModal('IMG_2684.jpeg')">
-        <img src="IMG_2684.jpeg" alt="Inauguración">
-        <div class="gallery-caption">Inauguración</div>
+      <div class="grid-cards">
+        <div class="card-item" onclick="openModal('Consulta General', 'Atención médica primaria integral.', ['Evaluación preventiva', 'Tratamientos generales'])">
+          <div class="card-img-wrapper"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Consulta General"><div class="card-overlay"><span>Consulta General</span><div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div></div></div>
+        </div>
+        <div class="card-item" onclick="openModal('Pediatría', 'Atención integral para infantes.', ['Desarrollo infantil', 'Atención médica'])">
+          <div class="card-img-wrapper"><img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80" alt="Pediatría"><div class="card-overlay"><span>Pediatría</span><div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div></div></div>
+        </div>
+        <div class="card-item" onclick="openModal('Odontología', 'Cuidado y prevención bucal.', ['Profilaxis', 'Restauraciones'])">
+          <div class="card-img-wrapper"><img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Odontología"><div class="card-overlay"><span>Odontología</span><div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div></div></div>
+        </div>
+        <div class="card-item" onclick="openModal('Laboratorio Clínico', 'Análisis precisos.', ['Sangre', 'Bioquímica'])">
+          <div class="card-img-wrapper"><img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=80" alt="Laboratorio Clínico"><div class="card-overlay"><span>Laboratorio Clínico</span><div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div></div></div>
+        </div>
+        <div class="card-item" onclick="openModal('Ginecología', 'Salud integral de la mujer.', ['Chequeos', 'Control prenatal'])">
+          <div class="card-img-wrapper"><img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80" alt="Ginecología"><div class="card-overlay"><span>Ginecología</span><div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div></div></div>
+        </div>
+        <div class="card-item" onclick="openModal('Cardiología', 'Salud cardiovascular.', ['Electrocardiograma', 'Control de presión'])">
+          <div class="card-img-wrapper"><img src="https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?auto=format&fit=crop&w=800&q=80" alt="Cardiología"><div class="card-overlay"><span>Cardiología</span><div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div></div></div>
+        </div>
+        <div class="card-item" onclick="openModal('Dermatología', 'Cuidado de la piel.', ['Acné', 'Afecciones cutáneas'])">
+          <div class="card-img-wrapper"><img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80" alt="Dermatología"><div class="card-overlay"><span>Dermatología</span><div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div></div></div>
+        </div>
+        <div class="card-item" onclick="openModal('Oftalmología', 'Exámenes oculares.', ['Evaluación de visión', 'Salud ocular'])">
+          <div class="card-img-wrapper"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80" alt="Oftalmología"><div class="card-overlay"><span>Oftalmología</span><div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: NOSOTROS -->
+    <section id="nosotros" class="page-section">
+      <h3 class="section-title">Sobre Nosotros</h3>
+      
+      <div class="about-card">
+        <h4><i class="fa-solid fa-users-rectangle"></i> ¿Quiénes Somos?</h4>
+        <p><strong>MOSCTHA</strong> es una organización sin fines de lucro con más de 35 años desarrollando proyectos comunitarios e integrales en la República Dominicana. Fundada en 1985 para mejorar la calidad de vida de las familias vulnerables.</p>
+        <p style="margin-top: 10px;">El <strong>Centro de Atención Integral La Solidaridad (CENCI)</strong> está habilitado por el Ministerio de Salud Pública (<strong>Habilitación Sectorial No. 0249-2021 | Ley No. 122-05</strong>).</p>
       </div>
 
-      <!-- Equipo de Trabajo -->
-      <div class="gallery-item" onclick="openModal('IMG_2683.jpeg')">
-        <img src="IMG_2683.jpeg" alt="Equipo de Trabajo">
-        <div class="gallery-caption">Equipo de Trabajo</div>
+      <div class="mv-grid">
+        <div class="about-card">
+          <h4><i class="fa-solid fa-bullseye"></i> Misión</h4>
+          <p>Ofrecer servicios de salud integral, oportuna y eficiente con los mayores estándares de calidad y sentido humano.</p>
+        </div>
+
+        <div class="about-card">
+          <h4><i class="fa-solid fa-eye"></i> Visión</h4>
+          <p>Ser la institución de salud referente en implementación de programas comunitarios que transformen vidas.</p>
+        </div>
       </div>
 
-      <!-- Personal Médico -->
-      <div class="gallery-item" onclick="openModal('IMG_2700.jpeg')">
-        <img src="IMG_2700.jpeg" alt="Personal Médico">
-        <div class="gallery-caption">Personal Médico</div>
+      <div class="president-card">
+        <img src="IMG_2682.jpeg" alt="Dr. Cherubin Joseph" class="president-img">
+        <div class="president-info">
+          ##### Dr. Cherubin Joseph
+          <p>Presidente del Consejo Directivo</p>
+          <span style="display: block; color: var(--gray); font-size: 0.95rem; margin-top: 4px;">CLINICA MOSCTHA - CENCI</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: CITA -->
+    <section id="cita" class="page-section">
+      <div class="form-card" id="form-cita-container"></div>
+    </section>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-title" onclick="showSection('inicio')" style="cursor: pointer;">CLINICA MOSCTHA - CENCI</div>
+      <a href="mailto:contacto@clinicacenci.com" style="color: #94a3b8; text-decoration: none;"><i class="fa-regular fa-envelope"></i> contacto@clinicacenci.com</a>
+      <div style="color: #cbd5e1; font-weight: 600; margin-top: 4px;"><i class="fa-solid fa-phone"></i> (809) 741-1990</div>
+      <div style="font-size: 0.88rem; color: #64748b; margin-top: 10px;">© 2026 CLINICA MOSCTHA - CENCI. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+  <!-- TEMPLATE FORMULARIO -->
+  <template id="appointment-form-template">
+    <h3 style="color: var(--primary); text-align: center; margin-bottom: 20px; font-weight: 700; font-size: 1.6rem;">Solicitar Cita Médica</h3>
+    
+    <div class="alert-success">
+      <i class="fa-solid fa-circle-check"></i> ¡Solicitud enviada con éxito! Revisa tu correo y SMS.
+    </div>
+
+    <form class="appointmentForm">
+      <div class="form-group">
+        <label>Nombre Completo *</label>
+        <input type="text" name="nombre" required placeholder="Ej. Juan Pérez">
       </div>
 
-      <!-- Centro de Salud -->
-      <div class="gallery-item" onclick="openModal('IMG_2664.jpeg')">
-        <img src="IMG_2664.jpeg" alt="Centro de Salud">
-        <div class="gallery-caption">Centro de Salud La Solidaridad</div>
+      <div class="form-group">
+        <label>Correo Electrónico *</label>
+        <input type="email" name="email" required placeholder="tuemail@ejemplo.com">
       </div>
 
-      <!-- Fachada Principal -->
-      <div class="gallery-item" onclick="openModal('IMG_2697.jpeg')">
-        <img src="IMG_2697.jpeg" alt="Fachada Principal">
-        <div class="gallery-caption">Fachada Principal</div>
+      <div class="form-group">
+        <label>Teléfono / WhatsApp *</label>
+        <input type="tel" name="telefono" required placeholder="809-000-0000">
       </div>
 
-      <!-- Instalaciones -->
-      <div class="gallery-item" onclick="openModal('IMG_2663.jpeg')">
-        <img src="IMG_2663.jpeg" alt="Instalaciones">
-        <div class="gallery-caption">Instalaciones</div>
+      <div class="form-group">
+        <label>Centro de Salud *</label>
+        <select name="centro" required>
+          <option value="">Seleccione centro</option>
+          <option value="Santo Domingo - Villa Mella">Santo Domingo - Villa Mella</option>
+          <option value="Santiago">Santiago</option>
+          <option value="Navarrete">Navarrete</option>
+        </select>
       </div>
 
-      <!-- Pacientes -->
-      <div class="gallery-item" onclick="openModal('IMG_2661.jpeg')">
-        <img src="IMG_2661.jpeg" alt="Pacientes">
-        <div class="gallery-caption">Pacientes en Sala de Espera</div>
+      <div class="form-group">
+        <label>Servicio o Especialidad *</label>
+        <select name="servicio" required>
+          <option value="">Seleccione servicio</option>
+          <option value="Consulta General">Consulta General</option>
+          <option value="Pediatría">Pediatría</option>
+          <option value="Odontología">Odontología</option>
+          <option value="Laboratorio Clínico">Laboratorio Clínico</option>
+          <option value="Ginecología">Ginecología</option>
+          <option value="Cardiología">Cardiología</option>
+          <option value="Dermatología">Dermatología</option>
+          <option value="Oftalmología">Oftalmología</option>
+        </select>
       </div>
 
-      <!-- Atención a Pacientes -->
-      <div class="gallery-item" onclick="openModal('IMG_2660.jpeg')">
-        <img src="IMG_2660.jpeg" alt="Atención a Pacientes">
-        <div class="gallery-caption">Atención a Pacientes</div>
+      <div style="display: flex; gap: 15px;">
+        <div class="form-group" style="flex:1;">
+          <label>Fecha *</label>
+          <input type="date" name="fecha" required>
+        </div>
+        <div class="form-group" style="flex:1;">
+          <label>Horario *</label>
+          <select name="hora" required>
+            <option value="Mañana (8:00 AM - 12:00 PM)">Mañana</option>
+            <option value="Tarde (2:00 PM - 5:00 PM)">Tarde</option>
+          </select>
+        </div>
       </div>
 
-      <!-- Medicina General -->
-      <div class="gallery-item" onclick="openModal('IMG_2686.jpeg')">
-        <img src="IMG_2686.jpeg" alt="Consultorio Medicina General">
-        <div class="gallery-caption">Consultorio Medicina General</div>
+      <div class="form-group">
+        <label>Mensaje (Opcional)</label>
+        <textarea name="mensaje" rows="3" placeholder="Observaciones o notas adicionales..."></textarea>
       </div>
 
-      <!-- Laboratorio & Química -->
-      <div class="gallery-item" onclick="openModal('IMG_2687.jpeg')">
-        <img src="IMG_2687.jpeg" alt="Laboratorio & Química">
-        <div class="gallery-caption">Laboratorio & Química</div>
-      </div>
+      <button type="submit" class="btn-submit">Enviar Solicitud de Cita</button>
+    </form>
+  </template>
 
-      <!-- Laboratorio -->
-      <div class="gallery-item" onclick="openModal('IMG_2688.jpeg')">
-        <img src="IMG_2688.jpeg" alt="Laboratorio">
-        <div class="gallery-caption">Laboratorio</div>
-      </div>
+  <!-- BOTÓN FLOTANTE MOBIL -->
+  <div class="bottom-bar">
+    <a href="tel:8097411990" class="bottom-btn btn-phone"><i class="fa-solid fa-phone"></i> (809) 741-1990</a>
+    <a onclick="showSection('cita')" class="bottom-btn btn-online"><i class="fa-regular fa-calendar-check"></i> Cita en línea</a>
+  </div>
 
-      <!-- Odontología -->
-      <div class="gallery-item" onclick="openModal('IMG_2689.jpeg')">
-        <img src="IMG_2689.jpeg" alt="Consultorio de Odontología">
-        <div class="gallery-caption">Consultorio de Odontología</div>
-      </div>
+  <!-- MODAL POPUP -->
+  <div id="serviceModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h3 id="modalTitle" style="color: var(--primary); margin-bottom: 12px; font-size: 1.5rem; font-weight: 700;"></h3>
+      <p id="modalBody" style="font-size: 1rem; color: var(--dark); line-height: 1.6;"></p>
+      
+      <div id="modalListContainer"></div>
 
-      <!-- Farmacia / Cocina -->
-      <div class="gallery-item" onclick="openModal('IMG_2690.jpeg')">
-        <img src="IMG_2690.jpeg" alt="Farmacia y Cocina">
-        <div class="gallery-caption">Farmacia / Cocina</div>
-      </div>
-
-      <!-- Recepción -->
-      <div class="gallery-item" onclick="openModal('IMG_2691.jpeg')">
-        <img src="IMG_2691.jpeg" alt="Recepción">
-        <div class="gallery-caption">Recepción</div>
-      </div>
-
-      <!-- Sala de Espera -->
-      <div class="gallery-item" onclick="openModal('IMG_2693.jpeg')">
-        <img src="IMG_2693.jpeg" alt="Sala de Espera">
-        <div class="gallery-caption">Sala de Espera</div>
-      </div>
-
-      <!-- Área de Urgencia -->
-      <div class="gallery-item" onclick="openModal('IMG_2694.jpeg')">
-        <img src="IMG_2694.jpeg" alt="Área de Urgencia">
-        <div class="gallery-caption">Área de Urgencia</div>
-      </div>
-
+      <button class="btn-submit" style="margin-top: 15px;" onclick="closeModal(); showSection('cita');">
+        <i class="fa-regular fa-calendar-check"></i> Agendar Cita para este Servicio
+      </button>
     </div>
   </div>
 
-  <!-- Modal pou zongle foto an gran -->
-  <div id="imageModal" class="modal" onclick="closeModal()">
-    <span class="close-btn">&times;</span>
-    <img id="modalImg" src="" alt="Enlarged View">
-  </div>
+</div>
 
-  <script>
-    function openModal(imageSrc) {
-      document.getElementById('modalImg').src = imageSrc;
-      document.getElementById('imageModal').style.display = 'flex';
+<script>
+  // URL GOOGLE SCRIPT BACKEND
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby5XXSSdJqiH22_K-dyXYX3rQQ-Ag-Sn5FrYM50gGHHMN4E2mWQb-e-FHCNx5uSPmMB/exec";
+
+  // MULTIPLE NOTICIAS Y CONSEJOS DE SALUD
+  const noticiasSaludRD = [
+    {
+      title: "Cuidado de la Hidratación y Salud Cardiovascular",
+      body: "Para evitar complicaciones vasculares y mantener una presión arterial óptima, se aconseja consumir suficiente agua diariamente y reducir el consumo excesivo de sal."
+    },
+    {
+      title: "Prevención Comunitaria contra el Dengue",
+      body: "Mantenga limpios los entornos del hogar y elimine recipientes con agua estancada. La eliminación de criaderos de mosquitos es fundamental."
+    },
+    {
+      title: "Chequeos Médicos Preventivos e Higiene Alimentaria",
+      body: "Realice sus análisis clínicos periódicos y mantenga la higiene en la manipulación de alimentos para prevenir infecciones gastrointestinales."
+    },
+    {
+      title: "Importancia del Esquema de Vacunación Familiar",
+      body: "Asegúrese de contar con las dosis de vacunación al día para niños y adultos mayores para prevenir brotes infecciosos comunitarios."
+    },
+    {
+      title: "Salud Mental y Manejo del Estrés Cotidiano",
+      body: "Tomarse pausas activas durante el trabajo y descansar adecuadamente ayuda a reducir el estrés y fortalece la respuesta inmunológica."
+    },
+    {
+      title: "Higiene de Manos y Prevención Infecciosa",
+      body: "El lavado constante de manos con agua y jabón por al menos 20 segundos continúa siendo la principal barrera de prevención contra virus."
+    },
+    {
+      title: "Actividad Física y Prevención de Hipertensión",
+      body: "Treinta minutos de caminata o ejercicio moderado diario ayudan a controlar los niveles de glucosa y protegen la salud del corazón."
+    }
+  ];
+
+  let currentNewsIndex = 0;
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const template = document.getElementById('appointment-form-template').content;
+    
+    document.getElementById('form-inicio-container').appendChild(template.cloneNode(true));
+    document.getElementById('form-cita-container').appendChild(template.cloneNode(true));
+
+    attachFormEvents();
+    initNewsCarousel();
+  });
+
+  function initNewsCarousel() {
+    const hoy = new Date();
+    const opcionesFecha = { weekday: 'short', day: 'numeric', month: 'short' };
+    const fechaTexto = hoy.toLocaleDateString('es-DO', opcionesFecha);
+
+    document.querySelectorAll('.widget-date-label').forEach(el => el.innerText = fechaTexto);
+
+    const dotsContainer = document.getElementById('news-dots-container');
+    dotsContainer.innerHTML = '';
+    noticiasSaludRD.forEach((_, idx) => {
+      const dot = document.createElement('div');
+      dot.className = `news-dot ${idx === 0 ? 'active' : ''}`;
+      dotsContainer.appendChild(dot);
+    });
+
+    renderNewsIndex(0);
+
+    setInterval(() => {
+      currentNewsIndex = (currentNewsIndex + 1) % noticiasSaludRD.length;
+      renderNewsIndex(currentNewsIndex);
+    }, 6000);
+  }
+
+  function renderNewsIndex(index) {
+    const titleEl = id => document.getElementById(id);
+    const titleBox = titleEl('news-title-el');
+    const bodyBox = titleEl('news-body-el');
+
+    if (!titleBox || !bodyBox) return;
+
+    titleBox.classList.add('news-fade');
+    bodyBox.classList.add('news-fade');
+
+    setTimeout(() => {
+      const item = noticiasSaludRD[index];
+      titleBox.querySelector('.widget-news-title').innerText = item.title;
+      bodyBox.innerText = item.body;
+
+      titleBox.classList.remove('news-fade');
+      bodyBox.classList.remove('news-fade');
+
+      document.querySelectorAll('.news-dot').forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === index);
+      });
+    }, 300);
+  }
+
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('show');
+  }
+
+  function showSection(sectionId) {
+    document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+
+    document.getElementById(sectionId).classList.add('active');
+    const activeNav = document.getElementById('nav-' + sectionId);
+    if (activeNav) activeNav.classList.add('active');
+
+    document.getElementById('navLinks').classList.remove('show');
+    window.scrollTo(0, 0);
+  }
+
+  function openModal(title, description, detailsArray) {
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalBody').innerText = description;
+    
+    const listContainer = document.getElementById('modalListContainer');
+    listContainer.innerHTML = '';
+    
+    if (detailsArray && detailsArray.length > 0) {
+      const ul = document.createElement('ul');
+      ul.className = 'modal-body-list';
+      detailsArray.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = '<i class="fa-solid fa-circle-check" style="color: var(--secondary); margin-right: 10px;"></i>' + item;
+        ul.appendChild(li);
+      });
+      listContainer.appendChild(ul);
     }
 
-    function closeModal() {
-      document.getElementById('imageModal').style.display = 'none';
-    }
-  </script>
+    document.getElementById('serviceModal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('serviceModal').style.display = 'none';
+  }
+
+  function attachFormEvents() {
+    document.querySelectorAll('.appointmentForm').forEach(form => {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const btn = this.querySelector('.btn-submit');
+        const alertBox = this.parentElement.querySelector('.alert-success');
+        
+        btn.innerText = "Enviando solicitud...";
+        btn.disabled = true;
+
+        const formData = new FormData(this);
+
+        fetch(SCRIPT_URL, {
+          method: 'POST',
+          body: formData,
+          mode: 'no-cors'
+        })
+        .then(() => {
+          btn.innerText = "Enviar Solicitud de Cita";
+          btn.disabled = false;
+          alertBox.style.display = 'block';
+          this.reset();
+        })
+        .catch(err => {
+          console.error("Error:", err);
+          btn.innerText = "Enviar Solicitud de Cita";
+          btn.disabled = false;
+          alertBox.style.display = 'block';
+          this.reset();
+        });
+      });
+    });
+  }
+</script>
 
 </body>
 </html>
