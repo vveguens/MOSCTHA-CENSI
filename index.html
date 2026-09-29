@@ -469,7 +469,7 @@
       background: var(--primary-dark);
     }
 
-    /* SEPARATE NEWS BOX DESIGN */
+    /* NEWS BOX */
     .health-news-wrapper {
       max-width: 850px;
       margin: 25px auto 0 auto;
@@ -549,10 +549,11 @@
       border-radius: 10px;
     }
 
+    /* FOOTER & LOCATIONS */
     footer {
       background: var(--dark);
       color: var(--white);
-      padding: 35px 5% 25px 5%;
+      padding: 40px 5% 30px 5%;
       text-align: center;
       margin-top: 50px;
       border-top: 4px solid var(--accent);
@@ -564,11 +565,73 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 15px;
+    }
+
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      width: 100%;
+      margin-bottom: 25px;
+    }
+
+    .location-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      color: var(--white);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .location-card:hover {
+      background: rgba(2, 132, 199, 0.2);
+      border-color: var(--accent);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .location-icon {
+      font-size: 1.8rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .location-card h4 {
+      font-size: 1.15rem;
+      color: #fef08a;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .location-card p {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .location-btn {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--white);
+      background: var(--primary);
+      padding: 6px 14px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .footer-title {
-      font-size: 1.15rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--accent);
     }
@@ -967,6 +1030,37 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-content">
+      
+      <!-- DIRECCIONES / UBICACIONES -->
+      <div class="locations-grid">
+        <a href="https://maps.google.com/?q=Calle+del+Sol+%231,+Urbanizacion+Sol+de+Luz,+Villa+mella,+Santo+Domingo" target="_blank" class="location-card">
+          <div>
+            <div class="location-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <h4>SANTO DOMINGO</h4>
+            <p>G3GP+6W2, Santo Domingo 11201<br>Calle del Sol #1, Urbanización Sol de Luz, Villa Mella</p>
+          </div>
+          <span class="location-btn"><i class="fa-solid fa-map-location-dot"></i> Ver en Mapa</span>
+        </a>
+
+        <a href="https://maps.google.com/?q=Calle+Del+Sol+%2345,+Santiago+de+los+Caballeros,+Rep%C3%BAblica+Dominicana" target="_blank" class="location-card">
+          <div>
+            <div class="location-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <h4>SANTIAGO</h4>
+            <p>Calle Del Sol #45, Santiago de los Caballeros, República Dominicana</p>
+          </div>
+          <span class="location-btn"><i class="fa-solid fa-map-location-dot"></i> Ver en Mapa</span>
+        </a>
+
+        <a href="https://maps.google.com/?q=Calle+Santiago+%2366,+Navarrete,+Santiago+de+los+Caballeros" target="_blank" class="location-card">
+          <div>
+            <div class="location-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <h4>NAVARRETE</h4>
+            <p>Calle Santiago #66, Navarrete, Santiago de los Caballeros</p>
+          </div>
+          <span class="location-btn"><i class="fa-solid fa-map-location-dot"></i> Ver en Mapa</span>
+        </a>
+      </div>
+
       <div class="footer-title" onclick="showSection('inicio')" style="cursor: pointer;">CLINICA MOSCTHA - CENCI</div>
       <a href="mailto:contacto@clinicacenci.com" style="color: #94a3b8; text-decoration: none;"><i class="fa-regular fa-envelope"></i> contacto@clinicacenci.com</a>
       <div style="color: #cbd5e1; font-weight: 600; margin-top: 4px;"><i class="fa-solid fa-phone"></i> (809) 741-1990</div>
